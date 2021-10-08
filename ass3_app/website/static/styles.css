@@ -1,0 +1,232 @@
+main {
+  min-height: 90vh;
+}
+
+.hori-card-img {
+  width: 100%;
+  height: 60vw;
+  object-position: center;
+  object-fit: cover;
+}
+
+.event-details-image-container {
+  height: 50vw;
+  margin: 0;
+  background-color: rgb(10, 10, 10);
+  display: flex;
+  justify-content: center;
+}
+
+.event-details-image {
+  height: 100%;
+}
+
+.results {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 60vw;
+  object-fit: cover;
+}
+
+.btn-primary {
+  background-image: linear-gradient(30deg, rgb(92, 0, 128), pink);
+  border: none;
+}
+
+.jumbotronback {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0)
+    ),
+    url(img/jumbotron.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  color: white;
+}
+
+.comment-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border: rgb(92, 0, 128) 2px solid;
+}
+
+/* Forms */
+
+#create-event-form {
+  padding: 0 2%;
+  background-color: rgb(250, 250, 250);
+  border-radius: 10px;
+}
+
+.create-event-form-wrap {
+  background-image: linear-gradient(30deg, rgb(92, 0, 128), pink);
+  padding: 3px;
+  border-radius: 10px;
+}
+
+textarea {
+  height: 100px;
+}
+
+.account-box {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 4em;
+  width: 100%;
+}
+
+.accounts-background {
+  background-image: url(img/jumbotron.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.accounts {
+  backdrop-filter: blur(5px);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-box .form-control,
+.write-comments .form-control {
+  border: none;
+  border-bottom: 2px solid rgb(230, 230, 230);
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.account-box .form-control:focus,
+.write-comments .form-control:focus {
+  box-shadow: none;
+}
+
+.account-box {
+  color: rgb(230, 230, 230);
+  margin: 50px 0;
+}
+
+.account-box h2 {
+  font-size: 2rem;
+}
+
+.account-box button {
+  width: 100%;
+}
+
+.account-box a {
+  display: block;
+}
+
+/* map */
+.map {
+  width: 100%;
+  height: 300px;
+}
+
+.page-heading {
+  background-image: linear-gradient(30deg, rgb(92, 0, 128), pink);
+  color: rgb(230, 230, 230);
+}
+
+/* event status */
+.upcoming {
+  color: greenyellow;
+}
+
+.inactive {
+  color: grey;
+}
+
+.booked {
+  color: yellow;
+}
+
+.cancelled {
+  color: red;
+}
+
+/* Media Queries are set based on Bootstrap container breakpoints */
+/* Go from the smallest screen size to the largest */
+
+/* bootstrap sm */
+@media (min-width: 576px) {
+  .event-details-image-container {
+    height: 300px;
+  }
+
+  .card-img-top {
+    height: 300px;
+  }
+
+  .hori-card-img {
+    height: 300px;
+  }
+
+  .account-box {
+    width: 576px;
+  }
+}
+
+/* bootstrap md */
+@media (min-width: 768px) {
+  .event-details-image-container {
+    height: 400px;
+  }
+
+  .card-img-top {
+    height: 150px;
+  }
+
+  .event-hori {
+    height: 205px;
+  }
+
+  .hori-card-img {
+    height: 205px;
+  }
+}
+
+/* bootstrap lg */
+@media (min-width: 992px) {
+  .event-details-image-container {
+    height: 500px;
+  }
+
+  .card-img-top {
+    height: 200px;
+  }
+
+  .event-hori {
+    height: 225px;
+  }
+
+  .hori-card-img {
+    height: 225px;
+  }
+}
+
+/* bootstrap xl */
+@media (min-width: 1200px) {
+  .card-img-top {
+    height: 250px;
+  }
+
+  .event-hori {
+    height: 225px;
+  }
+
+  .hori-card-img {
+    height: 225px;
+  }
+}

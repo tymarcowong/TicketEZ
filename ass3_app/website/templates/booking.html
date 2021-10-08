@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+<!-- Content -->
+{% block content %}
+<div class="container">
+        <div class="row">
+          <div class="col">
+            <h2 class="page-heading px-4 pt-4 pb-3">My Bookings</h2>
+          </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div class="row">
+          <div class="col">
+            <h3 class="ms-4">Upcoming Events</h4>
+          </div>
+        </div>
+
+        <!-- Booking card 1 -->
+        <div class="row border-bottom my-2 event-hori">
+          <div class="col-md-6 col-lg-5 col-xl-4">
+            <img
+              class="hori-card-img"
+              src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
+              alt="image for the event"
+            />
+          </div>
+          <div class="col-md-6 col-lg-7 col-xl-8">
+            <div class="results">
+              <div class="mx-3 mt-2">
+                <p><small>Booking ID: 3</small></p>
+                <p><strong>Date of Booking: </strong>30/09/2021</p>
+                <h3>Kenshi Yonezu</h3>
+                <h4>Yonezu Kenshi 2021 Tour</h4>
+
+                <a href="event.html" class="btn btn-primary mb-3">Event Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Previous Events -->
+        <div class="row mt-5">
+          <div class="col">
+            <h3 class="ms-4">Previous Events</h3>
+          </div>
+        </div>
+
+        <!-- Booking card 2 -->
+        <div class="row border-bottom my-2 event-hori">
+          <div class="col-md-6 col-lg-5 col-xl-4">
+            <img
+              class="hori-card-img"
+              src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
+              alt="image for the event"
+            />
+          </div>
+          <div class="col-md-6 col-lg-7 col-xl-8">
+            <div class="results">
+              <div class="mx-3 mt-2">
+                <p><small>Booking ID: 1</small></p>
+                <p><strong>Date of Booking: </strong>30/09/2021</p>
+                <h3>Kenshi Yonezu</h3>
+                <h4>Yonezu Kenshi 2021 Tour</h4>
+
+                <a href="event.html" class="btn btn-primary mb-3">Event Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking card 3 -->
+        <div class="row border-bottom my-2 event-hori">
+          <div class="col-md-6 col-lg-5 col-xl-4">
+            <img
+              class="hori-card-img"
+              src="https://d35kvm5iuwjt9t.cloudfront.net/dbimages/sfx263146.jpg"
+              alt="image for the event"
+            />
+          </div>
+          <div class="col-md-6 col-lg-7 col-xl-8">
+            <div class="results">
+              <div class="mx-3 mt-2">
+                <p><small>Booking ID: 2</small></p>
+                <p><strong>Date of Booking: </strong>01/10/2021</p>
+                <h3>Lorde</h3>
+                <h4>The Solar Power Tour</h4>
+
+                <a href="event.html" class="btn btn-primary mb-3">Event Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock%}

@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+<!-- Content -->
+{% block content %}
+<div class="event-details-image-container">
+  <img
+    class="event-details-image"
+    src="https://d38fgd7fmrcuct.cloudfront.net/1_3vmufg2nxdk5pxma6e0b6.jpg"
+    alt="image of the event"
+  />
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <button class="my-2 btn btn-primary float-end mt-2 me-2 mb-0">
+        Edit Event
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 event-status-container order-md-2">
+      <p class="text-end event-status upcoming me-4 mt-3">
+        <strong>Upcoming</strong>
+      </p>
+    </div>
+    <div class="col-md-6 order-md-1">
+      <h2 class="my-3">YOASOBI</h2>
+      <h2 class="my-3">KEEP OUT THE THEATER</h2>
+    </div>
+  </div>
+
+  <!-- Event Details -->
+  <div class="row my-4">
+    <div class="col-md-4 order-md-2 my-3">
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-clock"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
+          />
+          <path
+            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
+          />
+        </svg>
+        <strong>Date and Time: </strong>31/10/2021 20:00 (GMT+9)
+      </p>
+
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-geo-alt"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"
+          />
+          <path
+            d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+          />
+        </svg>
+        <strong>Location: </strong>Fortitude Valley Music Hall, 312-318
+        Brunswick St, Fortitude Valley QLD 4006
+      </p>
+
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-bookmark"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"
+          />
+        </svg>
+        <strong>Category: </strong> J-Pop
+      </p>
+
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-receipt"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"
+          />
+          <path
+            d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
+          />
+        </svg>
+        <strong>Price per ticket:</strong> 69
+      </p>
+
+      <p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-receipt"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"
+          />
+          <path
+            d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
+          />
+        </svg>
+        <strong>Remaining Tickets:</strong> 23
+      </p>
+
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#bookTicket"
+      >
+        Book Tickets
+      </button>
+    </div>
+    <div class="col-md-8 order-md-1">
+      <p><strong>Description: </strong></p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+        nostrum pariatur assumenda delectus porro, illum nisi. Deleniti
+        inventore ex sequi reprehenderit repudiandae optio nobis dolores,
+        pariatur veniam tenetur numquam quaerat natus error unde aut laboriosam,
+        modi, doloremque velit eveniet voluptate harum debitis officiis ratione
+        facilis. Perspiciatis accusamus maiores quibusdam ipsum.
+      </p>
+    </div>
+  </div>
+
+  <!-- Modal - Booking Tickets -->
+  <div
+    class="modal fade"
+    id="bookTicket"
+    tabindex="-1"
+    aria-labelledby="bookTicketLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookTicketLabel">Book Tickets</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div>
+              <label for="bookTicketAmount" class="form-label"
+                >Please enter the number of tickets you want to book</label
+              >
+              <input type="number" class="form-control" id="bookTicketAmount" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Place Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div class="row">
+    <div class="col">
+      <iframe
+        class="map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.3646245742393!2d153.0323211150566!3d-27.457905582895876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b91592f8013be8d%3A0x349b71d19fceb321!2sFortitude%20Music%20Hall!5e0!3m2!1sen!2sau!4v1631922224602!5m2!1sen!2sau"
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- Comments -->
+  <div class="row">
+    <div class="col">
+      <h2 class="my-3">Comments</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex justify-content-start">
+      <img
+        src="img/users/null.jpg"
+        alt="User icon"
+        class="comment-icon rounded-circle d-inline-flex"
+      />
+      <div class="ms-3 flex-grow-1">
+        <form class="write-comments">
+          <input
+            type="text"
+            class="form-control"
+            id="event-name"
+            placeholder="Write comment here..."
+          />
+          <button class="btn btn-primary my-3 float-end" type="submit">
+            Post Comment
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comment 1 -->
+  <div class="row mb-0">
+    <div class="col d-flex justify-content-start">
+      <img
+        src="img/users/null.jpg"
+        alt="User icon"
+        class="comment-icon rounded-circle d-inline-flex"
+      />
+      <div class="ms-3">
+        <p class="m-0">User Name 1</p>
+        <p class="m-0">
+          <span class="text-muted">Post on 18/09/2021</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row border-bottom mt-1 mb-2">
+    <div class="col">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+        esse, non expedita beatae illum facere optio sit nesciunt similique eos?
+      </p>
+    </div>
+  </div>
+
+  <!-- Comment 2 -->
+  <div class="row mb-0">
+    <div class="col d-flex justify-content-start">
+      <img
+        src="img/users/null.jpg"
+        alt="User icon"
+        class="comment-icon rounded-circle d-inline-flex"
+      />
+      <div class="ms-3">
+        <p class="m-0">User Name 2</p>
+        <p class="m-0">
+          <span class="text-muted">Post on 29/09/2021</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row border-bottom mt-1 mb-2">
+    <div class="col">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, nemo.
+      </p>
+    </div>
+  </div>
+
+  <!-- Comment 3 -->
+  <div class="row mb-0">
+    <div class="col d-flex justify-content-start">
+      <img
+        src="img/users/null.jpg"
+        alt="User icon"
+        class="comment-icon rounded-circle d-inline-flex"
+      />
+      <div class="ms-3">
+        <p class="m-0">User Name 3</p>
+        <p class="m-0">
+          <span class="text-muted">Post on 30/09/2021</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row border-bottom mt-1 mb-2">
+    <div class="col">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+        reprehenderit eius incidunt? Provident ullam adipisci animi quibusdam
+        vitae minus, ipsa eligendi magnam cumque eum ex, voluptatem id. Quas
+        inventore velit, libero dolore impedit corporis beatae soluta aliquam
+        vel, sapiente cupiditate ipsum nobis fugit repudiandae alias molestiae
+        quisquam distinctio ab! Laborum eveniet dolor omnis sunt, ad reiciendis.
+        Tenetur eligendi mollitia, ullam deserunt reprehenderit dolorem dolor
+        quos et sit voluptate cumque, distinctio esse. Porro commodi explicabo
+        provident doloribus libero fugiat minima maxime officiis ut beatae
+        suscipit incidunt quasi quae est reprehenderit iste, ratione voluptatem
+        molestiae quos deleniti! Saepe molestiae cum voluptatum eligendi.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

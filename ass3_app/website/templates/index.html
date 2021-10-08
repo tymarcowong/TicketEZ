@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+<!-- Jumbotron -->
+{% block header %}
+<div class="mb-4 bg-light rounded-3">
+  <div class="jumbotronback container-fluid p-5">
+    <h1 class="display-5 my-5 fw-bold">Find your perfect music concert</h1>
+    <p class="my-5 fs-4">Book tickets for yourself and friends!</p>
+    <a class="btn btn-primary btn-lg" href="#browse-events">
+      Find your events
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+<!-- Main -->
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col my-4"><h2>Newest Events</h2></div>
+  </div>
+
+  <!-- Displays the 3 newest events in cards -->
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <img
+          src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
+          class="card-img-top"
+          alt="image for the event"
+        />
+        <p class="text-end upcoming mt-2 me-2">
+          <strong>Upcoming</strong>
+        </p>
+
+        <div class="mx-3">
+          <h3>Kenshi Yonezu</h3>
+          <h4>Yonezu Kenshi 2021 Tour</h4>
+          <p>
+            <strong>Location: </strong>2-3 Kitanomarukoen, Chiyoda City, Tokyo
+            102-8321, Japan
+          </p>
+          <p><strong>Date: </strong>31/10/2021</p>
+        </div>
+
+        <a href="event.html" class="btn btn-primary">Details</a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <img
+          src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
+          class="card-img-top"
+          alt="image for the event"
+        />
+        <p class="text-end upcoming mt-2 me-2">
+          <strong>Upcoming</strong>
+        </p>
+        <div class="mx-3">
+          <h3>Kenshi Yonezu</h3>
+          <h4>Yonezu Kenshi 2021 Tour</h4>
+          <p>
+            <strong>Location: </strong>2-3 Kitanomarukoen, Chiyoda City, Tokyo
+            102-8321, Japan
+          </p>
+          <p><strong>Date: </strong>31/10/2021</p>
+        </div>
+
+        <a href="event.html" class="btn btn-primary">Details</a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <img
+          src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
+          class="card-img-top"
+          alt="image for the event"
+        />
+        <p class="text-end upcoming mt-2 me-2">
+          <strong>Upcoming</strong>
+        </p>
+        <div class="mx-3">
+          <h3>Kenshi Yonezu</h3>
+          <h4>Yonezu Kenshi 2021 Tour</h4>
+          <p>
+            <strong>Location: </strong>2-3 Kitanomarukoen, Chiyoda City, Tokyo
+            102-8321, Japan
+          </p>
+          <p><strong>Date: </strong>31/10/2021</p>
+        </div>
+
+        <a href="event.html" class="btn btn-primary">Details</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Browse events -->
+  <div class="row" id="browse-events">
+    <div class="col my-4">
+      <h2>Find An Event</h2>
+    </div>
+  </div>
+
+  <form>
+    <div class="row">
+      <div class="col-md-6 my-3">
+        <label for="search-artist">Search by Artist</label>
+        <input
+          type="text"
+          class="form-control mt-2"
+          id="search-artist"
+          placeholder="Artist"
+        />
+      </div>
+
+      <div class="col-md-6 my-3">
+        <label for="search-category">Search by Category</label>
+        <select
+          class="form-select mt-2"
+          id="search-category"
+          aria-label="Default select example"
+        >
+          <option selected>Select...</option>
+          <option>Hip Hop/Rap</option>
+          <option>EDM</option>
+          <option>R&B</option>
+          <option>Punk</option>
+          <option>Rock</option>
+          <option>House</option>
+          <option>Country</option>
+          <option>Metal</option>
+          <option>Jazz</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary my-3">Filter</button>
+  </form>
+
+  <!-- Events list -->
+
+  <!-- Event card 1 -->
+  <div class="row border-bottom my-2 event-hori">
+    <div class="col-md-6 col-lg-5 col-xl-4">
+      <img
+        class="hori-card-img"
+        src="https://d38fgd7fmrcuct.cloudfront.net/1_3vmufg2nxdk5pxma6e0b6.jpg"
+        alt="image for the event"
+      />
+    </div>
+    <div class="col-md-6 col-lg-7 col-xl-8">
+      <div class="results">
+        <p class="text-end upcoming mt-2 me-2">
+          <strong>Upcoming</strong>
+        </p>
+        <h3>YOASOBI</h3>
+        <h4>KEEP OUT THEATER</h4>
+        <p>
+          31/10/2021, Online Lorem ipsum dolor, sit amet consectetur adipisicing
+          elit. Quaerat iure consequatur veritatis atque minus. Fugiat
+          consequuntur minus reprehenderit beatae eum ratione esse aut. Deleniti
+          vel ea consectetur animi aperiam repudiandae rem, dolor similique ipsa
+          velit quasi itaque! Eaque voluptatibus placeat iste deleniti mollitia,
+          dolorem cum blanditiis sunt tenetur libero, voluptatem error hic
+          adipisci repudiandae maiores praesentium deserunt, doloribus
+          distinctio aperiam suscipit modi neque laborum in! Modi ab, dicta
+          magni reprehenderit minus corporis quis laborum sequi harum magnam
+          maiores amet. Eum natus non magnam quo illo voluptas? Accusamus
+          aspernatur, ipsam explicabo blanditiis exercitationem cumque,
+          veritatis nostrum libero quia quidem, aperiam cupiditate!
+        </p>
+        <a class="btn btn-primary mb-3" href="event.html">Details</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event card 2 -->
+  <div class="row border-bottom my-2 event-hori">
+    <div class="col-md-6 col-lg-5 col-xl-4">
+      <img
+        class="hori-card-img"
+        src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
+        alt="image for the event"
+      />
+    </div>
+    <div class="col-md-6 col-lg-7 col-xl-8">
+      <div class="results">
+        <p class="text-end upcoming mt-2 me-2">
+          <strong>Upcoming</strong>
+        </p>
+        <h3>YOASOBI</h3>
+        <h4>KEEP OUT THEATER</h4>
+        <p>31/10/2021, Online</p>
+        <a class="btn btn-primary mb-3" href="event.html">Details</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

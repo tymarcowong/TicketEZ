@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% import "bootstrap/wtf.html" as wtf %}
+
+<!-- Content -->
+{% block content %}
+<div class="accounts-background">
+  <div class="accounts">
+    <div class="account-box">
+      <h2>{{heading}}</h2>
+      <!-- {wtf.quick_form(form)} -->
+      <form>
+        <div class="form-floating mt-5">
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="email"
+          />
+          <label for="email">Email</label>
+        </div>
+
+        <div class="form-floating mt-5">
+          <input
+            type="text"
+            class="form-control"
+            id="pwd"
+            placeholder="Password"
+          />
+          <label for="pwd">Password</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary py-3 my-5">Login</button>
+      </form>
+
+      {% if heading|lower == "register" %}
+      <a href="{{url_for('auth.login')}}" class="text-center">Sign In Now</a>
+      {% else %}
+      <a href="{{url_for('auth.register')}}" class="text-center"
+        >Don't have an account?</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
