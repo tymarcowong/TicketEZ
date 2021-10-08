@@ -43,8 +43,8 @@ def create():
 #     flash(f'Successfully created new travel destination', 'success')
 
 #     return redirect(url_for('destination.show', id=destination.id)) 
-#   return render_template('destinations/create.html', form=form)
-  return render_template('destinations/create.html')
+#   return render_template('events/create.html', form=form)
+  return render_template('events/create.html')
 
 # route for posting comment to the event based on the given ID
 @bp.route('/<int:id>/comment', methods = ['GET', 'POST'])  
