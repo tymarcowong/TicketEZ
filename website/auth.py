@@ -7,32 +7,33 @@ from .forms import LoginForm,RegisterForm
 from flask_login import login_user, login_required,logout_user
 from . import db
 
+from pprint import pprint
+
 
 #create a blueprint
 bp = Blueprint('auth', __name__)
 
 @bp.route('/login', methods=["POST", "GET"])
 def login():
-    # login_form = LoginForm()
-    # if login_form.validate_on_submit():
-    #     #POST
-    #     flash(f"Welcome, {login_form.user_name.data}!", "success")
-    #     return redirect(url_for("main.index"))
-    #GET
-    #return render_template("user.html", heading="Login", form=login_form)
-    return render_template("user.html", heading="Log In")
+    login_form = LoginForm()
+    if login_form.validate_on_submit():
+        #POST
+        flash(f"Welcome, {login_form.user_name.data}!", "success")
+        return redirect(url_for("main.index"))
+    # GET
+    return render_template("user.html", heading="Log In", form=login_form)
     
 
 @bp.route('/register', methods=["POST", "GET"])
 def register():
-    # register_form = RegisterForm()
-    # if register_form.validate_on_submit():
-    #     #POST
-    #     flash(f"Successfully registered, {register_form.user_name.data}!", "primary")
-    #     return redirect(url_for("auth.login"))
-    #GET
-    #return render_template("user.html", heading="Register", form=register_form)
-    return render_template("user.html", heading="Register")
+    register_form = RegisterForm()
+    if register_form.validate_on_submit():
+        # POST
+        flash(f"Successfully registered, {register_form.user_name.data}!", "primary")
+        return redirect(url_for("auth.login"))
+    # GET
+
+    return render_template("user.html", heading="Register", form=register_form)
 
 @bp.route('/logout', methods=["POST", "GET"])
 def logout():

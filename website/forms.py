@@ -7,35 +7,23 @@ from flask_wtf.file import FileRequired, FileField, FileAllowed
 ALLOWED_FILE = {'PNG', 'JPG', 'png', 'jpg'}
 
 # creates the login information
-
-
 class LoginForm(FlaskForm):
     user_name = StringField("User Name", validators=[
                             InputRequired('Enter user name')])
     password = PasswordField("Password", validators=[
                              InputRequired('Enter user password')])
-    submit = SubmitField("Login")
 
 
-# this is the registration form
+# registration form
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired()])
-    email_id = StringField("Email Address", validators=[
-                           Email("Please enter a valid email")])
-    password = PasswordField("Password", validators=[InputRequired(),
-                                                     EqualTo('confirm', message="Passwords should match")])
-    contact = IntegerField("Contact Number", validators=[
-                           InputRequired('Please enter a valid contact number')])
-    address = StringField("Address", validators=[
-                          InputRequired('Please enter your address')])
-    confirm = PasswordField("Confirm Password")
-
-    # submit button
-    submit = SubmitField("Register")
+    email_id = StringField("Email Address", validators=[InputRequired(), Email("Please enter a valid email")])
+    contact = IntegerField("Contact Number", validators=[InputRequired('Please enter a valid contact number')])
+    address = StringField("Address", validators=[InputRequired('Please enter your address')])
+    password = PasswordField("Password", validators=[InputRequired(), EqualTo('confirm', message="Passwords should match")])
+    confirm = PasswordField("Confirm Password", validators=[InputRequired()])
 
 # create event form
-
-
 class EventForm(FlaskForm):
     event_name = StringField('Event Name', validators=[InputRequired()])
     event_status = StringField('Event Status', validators=[InputRequired()])

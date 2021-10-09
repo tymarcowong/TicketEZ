@@ -106,6 +106,14 @@ textarea {
   background-color: transparent;
 }
 
+.account-box .form-control {
+  color: white;
+}
+
+.account-box input:last-of-type {
+  width: 100%;
+}
+
 .account-box .form-control:focus,
 .write-comments .form-control:focus {
   box-shadow: none;

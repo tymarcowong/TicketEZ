@@ -1,36 +1,44 @@
 {% extends "base.html" %} {% import "bootstrap/wtf.html" as wtf %}
 
+<!-- Title -->
+{% block title %} - {{heading}} {% endblock%}
+
 <!-- Content -->
 {% block content %}
 <div class="accounts-background">
   <div class="accounts">
     <div class="account-box">
       <h2>{{heading}}</h2>
-      <!-- {wtf.quick_form(form)} -->
-      <form>
-        <div class="form-floating mt-5">
-          <input
-            type="text"
-            class="form-control"
-            id="email"
-            placeholder="email"
-          />
-          <label for="email">Email</label>
-        </div>
 
+      <form method="post">
+        {{ form.csrf_token }} {% for field in form %}
+        <!-- Hide wtf TokenField -->
+        {% if field.type == "CSRFTokenField" %}
+        <!-- Display fields normally -->
+        {% else %}
         <div class="form-floating mt-5">
-          <input
-            type="text"
-            class="form-control"
-            id="pwd"
-            placeholder="Password"
-          />
-          <label for="pwd">Password</label>
+          <!-- wtf field -->
+          {{ field(class="form-control", placeholder="placeholder") }}
+          <!-- wtf label -->
+          {{ field.label }}
+          <!-- wtf validation error -->
+          <ul>
+            {% for error in field.errors %}
+            <li style="color: red">{{ error }}</li>
+            {% endfor %}
+          </ul>
         </div>
-
-        <button type="submit" class="btn btn-primary py-3 my-5">Login</button>
+        {% endif %} {% endfor %}
+        <input
+          type="submit"
+          class="btn btn-primary py-3 my-5"
+          id="submit"
+          value="{{heading}}"
+        />
       </form>
 
+      <!-- Display a link to the Login page if user is on Register page -->
+      <!-- Display a link to the Register page if user is on Log In page -->
       {% if heading|lower == "register" %}
       <a href="{{url_for('auth.login')}}" class="text-center">Sign In Now</a>
       {% else %}
