@@ -1,58 +1,29 @@
 
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
-from flask_wtf.file import FileRequired, FileField, FileAllowed
-
-ALLOWED_FILE = {'PNG', 'JPG', 'png', 'jpg'}
-
-# creates the login information
 
 
+# Update the following forms and delete this comment - Marco
+
+#creates the login information
 class LoginForm(FlaskForm):
-    user_name = StringField("User Name", validators=[
-                            InputRequired('Enter user name')])
-    password = PasswordField("Password", validators=[
-                             InputRequired('Enter user password')])
+    user_name=StringField("User Name", validators=[InputRequired('Enter user name')])
+    password=PasswordField("Password", validators=[InputRequired('Enter user password')])
     submit = SubmitField("Login")
 
-
-# this is the registration form
+ # this is the registration form
 class RegisterForm(FlaskForm):
-    user_name = StringField("User Name", validators=[InputRequired()])
-    email_id = StringField("Email Address", validators=[
-                           Email("Please enter a valid email")])
-    password = PasswordField("Password", validators=[InputRequired(),
-                                                     EqualTo('confirm', message="Passwords should match")])
-    contact = IntegerField("Contact Number", validators=[
-                           InputRequired('Please enter a valid contact number')])
-    address = StringField("Address", validators=[
-                          InputRequired('Please enter your address')])
+    user_name=StringField("User Name", validators=[InputRequired()])
+    email_id = StringField("Email Address", validators=[Email("Please enter a valid email")])
+    
+    #add buyer/seller - check if it is a buyer or seller hint : Use RequiredIf field
+
+
+    #linking two fields - password should be equal to data entered in confirm
+    password=PasswordField("Password", validators=[InputRequired(),
+                  EqualTo('confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password")
 
-    # submit button
+    #submit button
     submit = SubmitField("Register")
-
-# create event form
-
-
-class EventForm(FlaskForm):
-    event_name = StringField('Event Name', validators=[InputRequired()])
-    event_status = StringField('Event Status', validators=[InputRequired()])
-    event_genre = StringField('Event Genre', validators=[InputRequired()])
-    date = StringField('Date', validators=[InputRequired()])
-    location = StringField('Location', validators=[InputRequired()])
-    google_map = TextAreaField('Google Map', validators=[InputRequired()])
-    description = TextAreaField('Description', validators=[InputRequired()])
-    image = FileField('Event Image', validators=[
-        FileRequired(message='Image cannot be empty'),
-        FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-    Price = StringField('Price', validators=[InputRequired()])
-    submit = SubmitField("Create")
-
-# comment form
-
-
-class CommentForm(FlaskForm):
-    text = TextAreaField('Comment', validators=[InputRequired()])
-    submit = SubmitField('Create')
