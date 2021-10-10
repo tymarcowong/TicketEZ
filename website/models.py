@@ -2,20 +2,19 @@ from . import db
 from datetime import datetime
 from flask_login import UserMixin
 
-
 class User(db.Model, UserMixin):
-    __tablename__ = 'User'
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True, nullable=False)
     contactNumber = db.Column(db.Integer(20), index=True, nullable=False)
     emailid = db.Column(db.String(100), index=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
 
-    comments = db.relationship('Comments', backref='User')
+    comments = db.relationship('Comment', backref='user')
 
 
 class Booking(db.Model):
-    __tablename__ = 'Booking'
+    __tablename__ = 'booking'
     id = db.Column(db.Integer, primary_key=True)
     num_tickets = db.Column(db.Integer, index=True, nullable=False)
     price = db.Column(db.Integer, index=True, nullable=False)
@@ -26,22 +25,19 @@ class Booking(db.Model):
     user = db.relationship('User', backref='booking')
 
 
-class Comments(db.Model):
-    __tablename__ = 'Comments'
+class Comment(db.Model):
+    __tablename__ = 'comment'
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(400))
     posted_at = db.Column(db.DateTime, default=datetime.now())
 
     # foreign keys
-    event_id = db.Column(db.Integer, db.ForeignKey('Event.event_id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
-
-    def repr(self):
-        return "<Comment: {}>".format(self.text)
+    event_id = db.Column(db.Integer, db.ForeignKey('event.event_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class Event(db.Model):
-    __tablename__ = 'Event'
+    __tablename__ = 'event'
     event_id = db.Column(db.Integer, primary_key=True)
     event_status = db.Column(db.String(20), index=True, nullable=False)
     event_name = db.Column(db.String(80), index=True, nullable=False)
@@ -53,7 +49,4 @@ class Event(db.Model):
     image = db.Column(db.String(400), index=True, nullable=False)
     price = db.Column(db.Integer(5), index=True, nullable=False)
 
-    comments = db.relationship('Comment', backref='Event')
-
-    def repr(self):
-        return "<Name: {}>".format(self.name)
+    comments = db.relationship('Comment', backref='event')

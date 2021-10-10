@@ -22,6 +22,7 @@ def show(id):
     #   flash(f"Cound not find a destination!", "warning")
     #   return redirect(url_for("main.index"))
     # return render_template('events/show.html', destination=destination, form=comment_form, id=id)
+
     return render_template('events/show.html')
 
 # route to the event create page
