@@ -16,7 +16,8 @@ def create_app():
 
     app.debug=True
     app.secret_key='utroutoru'
-
+    
+    from .models import User, Event, Booking, Comment
     # configure and initialize DB
     app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///sitedata.sqlite'
     db.init_app(app)   

@@ -24,9 +24,9 @@ class RegisterForm(FlaskForm):
 
 # create event form
 class EventForm(FlaskForm):
-    event_name = StringField('Event Name', validators=[InputRequired()])
-    event_status = StringField('Event Status', validators=[InputRequired()])
-    event_genre = StringField('Event Genre', validators=[InputRequired()])
+    name = StringField('Event Name', validators=[InputRequired()])
+    status = StringField('Event Status', validators=[InputRequired()])
+    genre = StringField('Event Genre', validators=[InputRequired()])
     date = StringField('Date', validators=[InputRequired()])
     location = StringField('Location', validators=[InputRequired()])
     google_map = TextAreaField('Google Map', validators=[InputRequired()])
@@ -34,7 +34,7 @@ class EventForm(FlaskForm):
     image = FileField('Event Image', validators=[
         FileRequired(message='Image cannot be empty'),
         FileAllowed(ALLOWED_FILES, message='Only supports png,jpg,JPG,PNG')])
-    Price = StringField('Price', validators=[InputRequired()])
+    price = StringField('Price', validators=[InputRequired()])
     submit = SubmitField("Create")
 
 # comment form
