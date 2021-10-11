@@ -52,6 +52,7 @@ class Event(db.Model):
     description = db.Column(db.String(500), index=True, nullable=False)
     image = db.Column(db.String(400), index=True, nullable=False)
     price = db.Column(db.Integer, index=True, nullable=False)
+    num_tickets = db.Column(db.Integer, index=True, nullable=False)
 
     comments = db.relationship('Comment', backref='event')
     bookings = db.relationship("Booking", backref = "event")
