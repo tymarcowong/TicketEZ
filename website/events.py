@@ -14,12 +14,14 @@ from .models import Event, Comment
 
 bp = Blueprint('event', __name__, url_prefix='/events')
 
+EVENT_GENRES = ["Country", "Electronic", "Funk", "Hip Hop", "Jazz", "House", "Pop", "Rap", "Rock"]
+
 # route for events based on the ID provided form the URL
 @bp.route('/<id>')
 def show(id):
 
-    event = Event.query.filter_by(id=id).first()
-    # # create the comment form
+    #event = Event.query.filter_by(id=id).first()
+    # create the comment form
     comment_form = CommentForm()    
 
     # # error handling 
@@ -27,15 +29,16 @@ def show(id):
        flash(f"Cound not find a destination!", "warning")
        return redirect(url_for("main.index"))
     
-    return render_template('events/show.html', event=event, form=comment_form, id=id)
+    #return render_template('events/show.html', event=event, form=comment_form, id=id)
+    return render_template('events/show.html', form=comment_form)
 
   
 
 # route to the event create page
 @bp.route('/create', methods = ['GET', 'POST'])
-@login_required
+# @login_required
 def create():
-#   form = DestinationForm()
+  form = EventForm()
 #   if form.validate_on_submit():
 #     destination = Destination(
 #       name = form.name.data,
@@ -52,7 +55,7 @@ def create():
 
 #     return redirect(url_for('destination.show', id=destination.id)) 
 #   return render_template('events/create.html', form=form)
-  return render_template('events/create.html')
+  return render_template('events/create.html', form = form, heading="Create Event")
 
 # route for posting comment to the event based on the given ID
 @bp.route('/<event>/comment', methods = ['GET', 'POST'])

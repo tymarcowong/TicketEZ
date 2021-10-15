@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, DateTimeField, SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
@@ -24,18 +24,19 @@ class RegisterForm(FlaskForm):
 
 # create event form
 class EventForm(FlaskForm):
-    name = StringField('Event Name', validators=[InputRequired()])
-    status = StringField('Event Status', validators=[InputRequired()])
-    genre = StringField('Event Genre', validators=[InputRequired()])
-    date = StringField('Date', validators=[InputRequired()])
+    event_name = StringField('Event Name', validators=[InputRequired()])
+    artist_name = StringField('Artist Name', validators=[InputRequired()])
+    status = SelectField("Status", choices=[("active", "Active"), ("upcoming", "Upcoming"), ("inactive", "Inactive")])
+    genre = SelectField("Genre", choices=[("country", "Country"), ("electronic", "Electronic"), ("funk", "Funk"), ("hiphop", "Hip Hop"), ("jazz", "Jazz"), ("house", "House"), ("pop", "Pop"), ("rap", "Rap"), ("rock", "Rock")])
+    datetime = DateTimeField('Date and Time', validators=[InputRequired()])
     location = StringField('Location', validators=[InputRequired()])
-    google_map = TextAreaField('Google Map', validators=[InputRequired()])
+    google_map = StringField('Google Map Link', validators=[InputRequired()])
     description = TextAreaField('Description', validators=[InputRequired()])
     image = FileField('Event Image', validators=[
         FileRequired(message='Image cannot be empty'),
-        FileAllowed(ALLOWED_FILES, message='Only supports png,jpg,JPG,PNG')])
+        FileAllowed(ALLOWED_FILES, message=f'Only supports {ALLOWED_FILES}')])
     price = StringField('Price', validators=[InputRequired()])
-    submit = SubmitField("Create")
+    ticket_count = IntegerField("Number of Tickets", validators=[InputRequired()])
 
 # comment form
 class CommentForm(FlaskForm):
