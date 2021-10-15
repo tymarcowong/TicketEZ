@@ -32,7 +32,7 @@ class Booking(db.Model):
 class Comment(db.Model):
     __tablename__ = 'comment'
     id = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.String(400))
+    text = db.Column(db.String(400))
     posted_at = db.Column(db.DateTime, default=datetime.now())
 
     # foreign keys
