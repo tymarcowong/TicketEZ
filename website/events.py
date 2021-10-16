@@ -26,6 +26,8 @@ def show(id):
     #event = Event.query.filter_by(id=id).first()
     # create the comment form
     comment_form = CommentForm()
+    #text = comment_form.text.data,
+    # might have to update CommentForm in forms.py
 
     # # error handling
     if Event is None:
