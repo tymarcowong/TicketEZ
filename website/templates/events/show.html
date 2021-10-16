@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 <!-- Title -->
 {% block title %} - Name of the Concert{% endblock %}
 
@@ -8,7 +7,7 @@
 <div class="event-details-image-container">
   <img
     class="event-details-image"
-    src="https://d38fgd7fmrcuct.cloudfront.net/1_3vmufg2nxdk5pxma6e0b6.jpg"
+    src="{{event.image}}"
     alt="image of the event"
   />
 </div>
@@ -25,12 +24,12 @@
   <div class="row">
     <div class="col-md-6 event-status-container order-md-2">
       <p class="text-end event-status upcoming me-4 mt-3">
-        <strong>Upcoming</strong>
+        <strong>{{event.status}}</strong>
       </p>
     </div>
     <div class="col-md-6 order-md-1">
-      <h2 class="my-3">YOASOBI</h2>
-      <h2 class="my-3">KEEP OUT THE THEATER</h2>
+      <h2 class="my-3">{{event.artist_name}}</h2>
+      <h2 class="my-3">{{event.event_name}}</h2>
     </div>
   </div>
 
@@ -53,7 +52,7 @@
             d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
           />
         </svg>
-        <strong>Date and Time: </strong>31/10/2021 20:00 (GMT+9)
+        <strong>Date and Time: </strong>{{event.date}} (GMT+9)
       </p>
 
       <p>
@@ -72,8 +71,7 @@
             d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
           />
         </svg>
-        <strong>Location: </strong>Fortitude Valley Music Hall, 312-318
-        Brunswick St, Fortitude Valley QLD 4006
+        <strong>Location: </strong>{{event.location}}
       </p>
 
       <p>
@@ -89,7 +87,7 @@
             d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"
           />
         </svg>
-        <strong>Category: </strong> J-Pop
+        <strong>Genre: </strong> {{event.genre}}
       </p>
 
       <p>
@@ -108,7 +106,7 @@
             d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
           />
         </svg>
-        <strong>Price per ticket:</strong> 69
+        <strong>Price per ticket: </strong>{{event.price}}
       </p>
 
       <p>
@@ -127,7 +125,7 @@
             d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"
           />
         </svg>
-        <strong>Remaining Tickets:</strong> 23
+        <strong>Remaining Tickets:</strong> {{event.num_tickets}}
       </p>
 
       <button
@@ -141,14 +139,7 @@
     </div>
     <div class="col-md-8 order-md-1">
       <p><strong>Description: </strong></p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        nostrum pariatur assumenda delectus porro, illum nisi. Deleniti
-        inventore ex sequi reprehenderit repudiandae optio nobis dolores,
-        pariatur veniam tenetur numquam quaerat natus error unde aut laboriosam,
-        modi, doloremque velit eveniet voluptate harum debitis officiis ratione
-        facilis. Perspiciatis accusamus maiores quibusdam ipsum.
-      </p>
+      <p>{{event.description}}</p>
     </div>
   </div>
 
@@ -198,10 +189,7 @@
   <!-- Map -->
   <div class="row">
     <div class="col">
-      <iframe
-        class="map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.3646245742393!2d153.0323211150566!3d-27.457905582895876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b91592f8013be8d%3A0x349b71d19fceb321!2sFortitude%20Music%20Hall!5e0!3m2!1sen!2sau!4v1631922224602!5m2!1sen!2sau"
-      ></iframe>
+      <iframe class="map" src="{{event.google_map}}"></iframe>
     </div>
   </div>
 

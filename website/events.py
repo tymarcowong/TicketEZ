@@ -20,22 +20,20 @@ EVENT_GENRES = ["Country", "Electronic", "Funk",
 # route for events based on the ID provided form the URL
 
 
-@bp.route('/<id>')
+@bp.route('/<int:id>')
 def show(id):
-
-    #event = Event.query.filter_by(id=id).first()
+    event = Event.query.filter_by(id=id).first()
+    print(event)
     # create the comment form
     comment_form = CommentForm()
-    #text = comment_form.text.data,
-    # might have to update CommentForm in forms.py
 
     # # error handling
-    if Event is None:
+    if event is None:
         flash(f"Cound not find a destination!", "warning")
         return redirect(url_for("main.index"))
 
     # return render_template('events/show.html', event=event, form=comment_form, id=id)
-    return render_template('events/show.html', form=comment_form)
+    return render_template('events/show.html', form=comment_form, event=event, id=id)
 
 
 # route to the event create page
