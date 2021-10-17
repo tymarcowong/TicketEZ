@@ -48,7 +48,7 @@ class Event(db.Model):
     event_name = db.Column(db.String(100), nullable=False)
     artist_name = db.Column(db.String(50), nullable=False)
     genre = db.Column(db.String(20), nullable=False)
-    date = db.Column(db.DateTime, nullable=False)
+    date = db.Column(db.Date, nullable=False)
     location = db.Column(db.String(200), nullable=False)
     google_map = db.Column(db.String(500), nullable=False)
     description = db.Column(db.String(1000), nullable=False)

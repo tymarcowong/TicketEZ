@@ -40,31 +40,34 @@ def show(id):
 @bp.route('/create', methods=['GET', 'POST'])
 # @login_required
 def create():
-    form = EventForm()
-#   if form.validate_on_submit():
-#     destination = Destination(
-#       name = event_form.event_name.data,
-#       artist_name = event_form.artist_name.data,
-#       status = event_form.status.data,
-#       genre = event_form.genre.data,
-#       date = event_form.datetime.data,
-#       location = event_form.location.data,
-#       map = event_form.google_map.data,
-#       description = event_form.description.data,
-#       image = check_upload_file(form),
-#       price = event_form.price.data,
-#       ticket_count = event_form.ticket_count.data
-#     )
-#     # add the object to the db session
-#     db.session.add(event)
-#     # commit to the database
-#     db.session.commit()
+    event_form = EventForm()
+    if event_form.validate_on_submit():
+        event = Event(
+        event_name = event_form.event_name.data,
+        artist_name = event_form.artist_name.data,
+        status = event_form.status.data,
+        genre = event_form.genre.data,
+        # update datetime format later
+        # date = event_form.datetime.data,
+        date = datetime(2021,10,16),
+        location = event_form.location.data,
+        google_map = event_form.google_map.data,
+        description = event_form.description.data,
+        image = check_event_img_file(event_form),
+        price = event_form.price.data,
+        num_tickets = event_form.num_tickers.data,
+        # update later once login is implementer
+        created_by = 2
+        )
+        # add the object to the db session
+        db.session.add(event)
+        # commit to the database
+        db.session.commit()
 
-#     flash(f'Successfully created new event', 'success')
+        flash(f'Successfully created new event', 'success')
 
-#     return redirect(url_for('destination.show', id=destination.id))
-#   return render_template('events/create.html', form=form)
-    return render_template('events/create.html', form=form, heading="Create Event")
+        return redirect(url_for('event.show', id=event.id))
+    return render_template('events/create.html', form=event_form, heading="Create Event")
 
 # route for posting comment to the event based on the given ID
 
@@ -93,12 +96,15 @@ def comment(event):
 
 
 @bp.route("<int:id>/update", methods=["GET", "POST"])
-def check_upload_file(form):
+
+
+def check_event_img_file(form):
     fp = form.image.data
     filename = fp.filename
     BASE_PATH = os.path.dirname(__file__)
+    EVENT_IMG_PATH = "static/img/events/"
     upload_path = os.path.join(
-        BASE_PATH, "static/images/", secure_filename(filename))
-    db_upload_path = "static/images/"+secure_filename(filename)
+        BASE_PATH, EVENT_IMG_PATH, secure_filename(filename))
+    db_upload_path = EVENT_IMG_PATH + secure_filename(filename)
     fp.save(upload_path)
     return db_upload_path

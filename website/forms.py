@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, DateTimeField, SelectField
-from wtforms.fields.html5 import DateTimeLocalField
+from wtforms.fields.html5 import DateTimeField, DateTimeLocalField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
@@ -29,15 +29,14 @@ class EventForm(FlaskForm):
     artist_name = StringField('Artist Name', validators=[InputRequired()])
     status = SelectField("Status", choices=[("", "--Please select status--"), ("active", "Active"), ("upcoming", "Upcoming"), ("inactive", "Inactive")])
     genre = SelectField("Genre", choices=[("", "--Please select genre--"), ("country", "Country"), ("electronic", "Electronic"), ("funk", "Funk"), ("hiphop", "Hip Hop"), ("jazz", "Jazz"), ("house", "House"), ("pop", "Pop"), ("rap", "Rap"), ("rock", "Rock")])
-    datetime = DateTimeLocalField('Date and Time', validators=[InputRequired()])
+    datetime = StringField('Date and Time', validators=[InputRequired()])
     location = StringField('Location', validators=[InputRequired()])
     google_map = StringField('Google Map Link', validators=[InputRequired()])
     description = TextAreaField('Description', validators=[InputRequired()])
-    image = FileField('Event Image', validators=[
-        FileRequired(message='Image cannot be empty'),
-        FileAllowed(ALLOWED_FILES, message=f'Only supports {ALLOWED_FILES}')])
+    image = FileField('Event Image', validators=[ FileRequired(), FileAllowed(ALLOWED_FILES, message=f"Accepted file types: {ALLOWED_FILES}")])
     price = StringField('Price', validators=[InputRequired()])
-    ticket_count = IntegerField("Number of Tickets", validators=[InputRequired()])
+    num_tickers = IntegerField("Number of Tickets", validators=[InputRequired()])
+    submit = SubmitField()
 
 # comment form
 class CommentForm(FlaskForm):

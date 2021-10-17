@@ -11,33 +11,6 @@
       <h2 class="page-heading px-4 pt-4 pb-3">Create Event</h2>
     </div>
   </div>
-  <form method="post" id="event-details-form">
-    {{ form.csrf_token }}
-    <!-- Loop through all fields in the form -->
-    {% for field in form %}
-    <!-- Hide wtf TokenField -->
-    {% if field.type == "CSRFTokenField" %}
-    <!-- Display fields normally -->
-    {% else %}
-    <!-- wtf label -->
-    {{ field.label }}
-    <!-- wtf field -->
-    {{ field(class="form-control") }}
-
-    <!-- wtf validation error -->
-    <ul>
-      {% for error in field.errors %}
-      <li>{{ error }}</li>
-      {% endfor %}
-    </ul>
-
-    {% endif %} {% endfor %}
-    <input
-      type="submit"
-      class="btn btn-primary py-3 my-5"
-      id="submit"
-      value="{{heading}}"
-    />
-  </form>
+  <div id="event-details-form">{{wtf.quick_form(form)}}</div>
 </div>
 {% endblock %}

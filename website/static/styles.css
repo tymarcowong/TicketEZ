@@ -52,9 +52,11 @@ main {
   object-fit: cover;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-default {
   background-image: linear-gradient(30deg, var(--clr-purple), var(--clr-pink));
   border: none;
+  margin: 2em 0;
 }
 
 .jumbotronback {
@@ -82,7 +84,8 @@ textarea {
   height: 100px;
 }
 
-form li {
+form li,
+.help-block {
   color: red;
 }
 
@@ -158,6 +161,7 @@ form li {
   color: var(--clr-offwhite);
 }
 
+/* Form submit button */
 .account-box input:last-of-type,
 #event-details-form input:last-of-type {
   width: 100%;
