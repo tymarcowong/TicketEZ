@@ -41,26 +41,25 @@ def show(id):
 # @login_required
 def create():
     form = EventForm()
-#   if form.validate_on_submit():
-#     destination = Destination(
-#       name = event_form.event_name.data,
-#       artist_name = event_form.artist_name.data,
-#       status = event_form.status.data,
-#       genre = event_form.genre.data,
-#       date = event_form.datetime.data,
-#       location = event_form.location.data,
-#       map = event_form.google_map.data,
-#       description = event_form.description.data,
-#       image = check_upload_file(form),
-#       price = event_form.price.data,
-#       ticket_count = event_form.ticket_count.data
-#     )
-#     # add the object to the db session
-#     db.session.add(event)
-#     # commit to the database
-#     db.session.commit()
+    # if form.validate_on_submit():
+    #     creation = Event(
+    #         name=form.event_name.data,
+    #         artist_name=form.artist_name.data,
+    #         status=form.status.data,
+    #         genre=form.genre.data,
+    #         date=form.datetime.data,
+    #         location=form.location.data,
+    #         map=form.google_map.data,
+    #         description=form.description.data,
+    #         image=check_upload_file(form),
+    #         price=form.price.data,
+    #         ticket_count=form.ticket_count.data)
+    # # add the object to the db session
+    #     db.session.add(creation)
+    # # commit to the database
+    #     db.session.commit()
 
-#     flash(f'Successfully created new event', 'success')
+    #     flash(f'Successfully created new event', 'success')
 
 #     return redirect(url_for('destination.show', id=destination.id))
 #   return render_template('events/create.html', form=form)
@@ -89,7 +88,7 @@ def comment(event):
         # save to database
         flash(f"Comments successfully posted", "success")
     # GET
-        return redirect(url_for("events.show", id=event))
+    return redirect(url_for("events.show", id=event))
 
 
 @bp.route("<int:id>/update", methods=["GET", "POST"])
