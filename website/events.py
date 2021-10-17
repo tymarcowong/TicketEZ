@@ -92,7 +92,7 @@ def comment(event):
         # save to database
         flash(f"Comments successfully posted", "success")
     # GET
-        return redirect(url_for("events.show", id=event))
+    return redirect(url_for("events.show", id=event))
 
 
 @bp.route("<int:id>/update", methods=["GET", "POST"])
