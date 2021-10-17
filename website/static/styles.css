@@ -56,7 +56,6 @@ main {
 .btn-default {
   background-image: linear-gradient(30deg, var(--clr-purple), var(--clr-pink));
   border: none;
-  margin: 2em 0;
 }
 
 .jumbotronback {
@@ -109,6 +108,10 @@ form li,
 
 #event-details-form .form-control:focus {
   border: 2px solid var(--clr-purple);
+}
+
+#event-details-form .btn {
+  margin: 2em 0;
 }
 
 #image {
