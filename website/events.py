@@ -82,9 +82,10 @@ def comment(event):
 
         # POST
         comment = Comment(text=comment_form.text.data,
-                          user=current_user,
+        # change user id after login function is implemented - Marco
+                          user_id=1, 
                           event_id=event_obj,
-                          created_at=datetime.now())
+                          posted_at=datetime.now())
 
         db.session.add(comment)
         db.session.commit()
