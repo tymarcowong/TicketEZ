@@ -38,7 +38,7 @@ def show(id):
 
 # route to the event create page
 @bp.route('/create', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def create():
     event_form = EventForm()
     if event_form.validate_on_submit():
