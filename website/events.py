@@ -5,8 +5,8 @@ from . import db
 from datetime import date, datetime
 import os
 from werkzeug.utils import secure_filename
-from .forms import CommentForm, EventForm
-from .models import Event, Comment
+from .forms import CommentForm, EventForm, BookingForm
+from .models import Event, Comment, Booking
 
 
 # from .models import Destination, Comment
@@ -43,21 +43,21 @@ def create():
     event_form = EventForm()
     if event_form.validate_on_submit():
         event = Event(
-        event_name = event_form.event_name.data,
-        artist_name = event_form.artist_name.data,
-        status = event_form.status.data,
-        genre = event_form.genre.data,
-        # update datetime format later
-        # date = event_form.datetime.data,
-        date = datetime(2021,10,16),
-        location = event_form.location.data,
-        google_map = event_form.google_map.data,
-        description = event_form.description.data,
-        image = check_event_img_file(event_form),
-        price = event_form.price.data,
-        num_tickets = event_form.num_tickers.data,
-        # update later once login is implementer
-        created_by = 2
+            event_name=event_form.event_name.data,
+            artist_name=event_form.artist_name.data,
+            status=event_form.status.data,
+            genre=event_form.genre.data,
+            # update datetime format later
+            # date = event_form.datetime.data,
+            date=datetime(2021, 10, 16),
+            location=event_form.location.data,
+            google_map=event_form.google_map.data,
+            description=event_form.description.data,
+            image=check_event_img_file(event_form),
+            price=event_form.price.data,
+            num_tickets=event_form.num_tickers.data,
+            # update later once login is implementer
+            created_by=2
         )
         # add the object to the db session
         db.session.add(event)
@@ -97,8 +97,6 @@ def comment(event):
 
 
 @bp.route("<int:id>/update", methods=["GET", "POST"])
-
-
 def check_event_img_file(form):
     fp = form.image.data
     filename = fp.filename
@@ -109,3 +107,17 @@ def check_event_img_file(form):
     db_upload_path = EVENT_IMG_PATH + secure_filename(filename)
     fp.save(upload_path)
     return db_upload_path
+
+
+@bp.route('/<event>/booking', methods=['GET', 'POST'])
+def booking():
+    booking_form = BookingForm()
+    if booking_form.validate_on_submit():
+        booking = Booking(booking_form.num_tickets.data)
+
+        db.session.add(booking)
+        db.session.commmit()
+
+        flash(f'Booking has been made', 'success')
+
+    return redirect(url_for('events.show', id=booking))
