@@ -2,6 +2,7 @@ from . import db
 from datetime import datetime
 from flask_login import UserMixin
 
+
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
@@ -13,17 +14,17 @@ class User(db.Model, UserMixin):
 
     comments = db.relationship('Comment', backref='user')
     created_events = db.relationship("Event", backref="user")
-    bookings = db.relationship("Booking", backref = "user")
+    bookings = db.relationship("Booking", backref="user")
 
 
 class Booking(db.Model):
     __tablename__ = 'booking'
     id = db.Column(db.Integer, primary_key=True)
     num_tickets = db.Column(db.Integer, index=True, nullable=False)
-    price = db.Column(db.Integer, index=True, nullable=False)
-    tickets_available = db.Column(db.Integer, index=True, nullable=False)
-    status = db.Column(db.String(100), index=True, nullable=False)
-    order_id = db.Column(db.Integer, index=True, unique=True, nullable=False)
+    # price = db.Column(db.Integer, index=True, nullable=False)
+    # tickets_available = db.Column(db.Integer, index=True, nullable=False)
+    # status = db.Column(db.String(100), index=True, nullable=False)
+    # order_id = db.Column(db.Integer, index=True, unique=True, nullable=False)
 
     # change to FK
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
@@ -59,4 +60,4 @@ class Event(db.Model):
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     comments = db.relationship('Comment', backref='event')
-    bookings = db.relationship("Booking", backref = "event")
+    bookings = db.relationship("Booking", backref="event")
