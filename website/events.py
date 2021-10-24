@@ -26,14 +26,14 @@ def show(id):
     print(event)
     # create the comment form
     comment_form = CommentForm()
-
+    booking_form = BookingForm()
     # # error handling
     if event is None:
         flash(f"Cound not find a destination!", "warning")
         return redirect(url_for("main.index"))
 
     # return render_template('events/show.html', event=event, form=comment_form, id=id)
-    return render_template('events/show.html', form=comment_form, event=event, id=id)
+    return render_template('events/show.html', comment_form = comment_form, booking_form = booking_form, event=event, id=id)
 
 
 # route to the event create page
@@ -72,7 +72,7 @@ def create():
 # route for posting comment to the event based on the given ID
 
 
-@bp.route('/<event>/comment', methods=['GET', 'POST'])
+@bp.route('/<int:id>/comment', methods=['GET', 'POST'])
 @login_required
 def comment(event):
 
@@ -109,7 +109,7 @@ def check_event_img_file(form):
     return db_upload_path
 
 
-@bp.route('/<event>/booking', methods=['GET', 'POST'])
+@bp.route('/<int:id>/booking', methods=['GET', 'POST'])
 def booking():
     booking_form = BookingForm()
     if booking_form.validate_on_submit():
