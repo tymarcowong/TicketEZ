@@ -33,7 +33,7 @@ def show(id):
         return redirect(url_for("main.index"))
 
     # return render_template('events/show.html', event=event, form=comment_form, id=id)
-    return render_template('events/show.html', comment_form = comment_form, booking_form = booking_form, event=event, id=id)
+    return render_template('events/show.html', comment_form=comment_form, booking_form=booking_form, event=event, id=id)
 
 
 # route to the event create page
@@ -81,8 +81,8 @@ def comment(id):
 
         # POST
         comment = Comment(text=comment_form.text.data,
-        # change user id after login function is implemented - Marco
-                          user_id=1, 
+                          # change user id after login function is implemented - Marco
+                          user_id=1,
                           event_id=event_obj,
                           posted_at=datetime.now())
 
@@ -99,10 +99,13 @@ def comment(id):
 def booking(id):
     booking_form = BookingForm()
     if booking_form.validate_on_submit():
-        booking = Booking(booking_form.num_tickets.data)
+        booking = Booking(
+            num_tickets=booking_form.num_tickets.data,
+            user_id=1,
+            event_id=1)
 
         db.session.add(booking)
-        db.session.commmit()
+        db.session.commit()
 
         flash(f'Booking has been made', 'success')
 
