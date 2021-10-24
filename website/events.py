@@ -74,8 +74,7 @@ def create():
 
 @bp.route('/<int:id>/comment', methods=['GET', 'POST'])
 @login_required
-def comment(event):
-
+def comment(id):
     comment_form = CommentForm()
     event_obj = Event.query.filter_by(id=event).first()
     if comment_form.validate_on_submit():
@@ -95,6 +94,19 @@ def comment(event):
     # GET
     return redirect(url_for("events.show", id=event))
 
+@bp.route('/<int:id>/booking', methods=['GET', 'POST'])
+@login_required
+def booking(id):
+    booking_form = BookingForm()
+    if booking_form.validate_on_submit():
+        booking = Booking(booking_form.num_tickets.data)
+
+        db.session.add(booking)
+        db.session.commmit()
+
+        flash(f'Booking has been made', 'success')
+
+    return redirect(url_for('events.show', id=booking))
 
 @bp.route("<int:id>/update", methods=["GET", "POST"])
 def check_event_img_file(form):
@@ -107,17 +119,3 @@ def check_event_img_file(form):
     db_upload_path = EVENT_IMG_PATH + secure_filename(filename)
     fp.save(upload_path)
     return db_upload_path
-
-
-@bp.route('/<int:id>/booking', methods=['GET', 'POST'])
-def booking():
-    booking_form = BookingForm()
-    if booking_form.validate_on_submit():
-        booking = Booking(booking_form.num_tickets.data)
-
-        db.session.add(booking)
-        db.session.commmit()
-
-        flash(f'Booking has been made', 'success')
-
-    return redirect(url_for('events.show', id=booking))
