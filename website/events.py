@@ -33,7 +33,7 @@ def show(id):
         return redirect(url_for("main.index"))
 
     # return render_template('events/show.html', event=event, form=comment_form, id=id)
-    return render_template('events/show.html', comment_form = comment_form, booking_form = booking_form, event=event, id=id)
+    return render_template('events/show.html', comment_form=comment_form, booking_form=booking_form, event=event, id=id)
 
 
 # route to the event create page
@@ -109,12 +109,7 @@ def check_event_img_file(form):
     return db_upload_path
 
 
-<<<<<<< HEAD
-@bp.route('/<event>/booking', methods=['GET', 'POST'])
-@login_required
-=======
 @bp.route('/<int:id>/booking', methods=['GET', 'POST'])
->>>>>>> bee980785dc4ec19976609640d0d03276d7b032c
 def booking():
     booking_form = BookingForm()
     if booking_form.validate_on_submit():
