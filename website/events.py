@@ -82,8 +82,8 @@ def comment(event):
 
         # POST
         comment = Comment(text=comment_form.text.data,
-        # change user id after login function is implemented - Marco
-                          user_id=1, 
+                          # change user id after login function is implemented - Marco
+                          user_id=1,
                           event_id=event_obj,
                           posted_at=datetime.now())
 
@@ -110,13 +110,17 @@ def check_event_img_file(form):
 
 
 @bp.route('/<event>/booking', methods=['GET', 'POST'])
+@login_required
 def booking():
     booking_form = BookingForm()
     if booking_form.validate_on_submit():
-        booking = Booking(booking_form.num_tickets.data)
+        booking = Booking(
+            num_tickets=booking_form.num_tickets.data,
+            user_id=1,
+            event_id=1)
 
         db.session.add(booking)
-        db.session.commmit()
+        db.session.commit()
 
         flash(f'Booking has been made', 'success')
 
