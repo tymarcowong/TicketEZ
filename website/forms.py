@@ -38,7 +38,8 @@ class EventForm(FlaskForm):
     status = SelectField("Status", choices=[("", "--Please select status--"),
                                             ("active", "Active"), ("upcoming", "Upcoming"), ("inactive", "Inactive")])
     genre = SelectField("Genre", choices=[("", "--Please select genre--"), ("country", "Country"), ("electronic", "Electronic"),
-                                          ("funk", "Funk"), ("hiphop", "Hip Hop"), ("jazz", "Jazz"), ("house", "House"), ("pop", "Pop"), ("rap", "Rap"), ("rock", "Rock")])
+                                          ("funk", "Funk"), ("hiphop", "Hip Hop"), ("jazz", "Jazz"), ("house", "House"), 
+                                          ("pop", "Pop"), ("rap", "Rap"), ("rock", "Rock")])
     datetime = StringField('Date and Time', validators=[InputRequired()])
     location = StringField('Location', validators=[InputRequired()])
     google_map = StringField('Google Map Link', validators=[InputRequired()])
