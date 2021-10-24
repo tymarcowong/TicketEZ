@@ -93,10 +93,7 @@ def comment(id):
         flash(f"Comments successfully posted", "success")
     # GET
     return redirect(url_for("events.show", id=id))
-<<<<<<< HEAD
 
-=======
->>>>>>> c05ad05c1ff843952e57ab16d77c65d9484f7f97
 
 @bp.route('/<int:id>/booking', methods=['GET', 'POST'])
 @login_required
@@ -115,10 +112,7 @@ def booking(id):
 
     return redirect(url_for('event.show', id=id))
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c05ad05c1ff843952e57ab16d77c65d9484f7f97
 @bp.route("<int:id>/update", methods=["GET", "POST"])
 def check_event_img_file(form):
     fp = form.image.data
@@ -129,8 +123,4 @@ def check_event_img_file(form):
         BASE_PATH, EVENT_IMG_PATH, secure_filename(filename))
     db_upload_path = EVENT_IMG_PATH + secure_filename(filename)
     fp.save(upload_path)
-<<<<<<< HEAD
     return db_upload_path
-=======
-    return db_upload_path
->>>>>>> c05ad05c1ff843952e57ab16d77c65d9484f7f97
