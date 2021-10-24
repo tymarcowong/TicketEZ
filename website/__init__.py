@@ -47,6 +47,11 @@ def create_app():
     from . import events
     app.register_blueprint(events.bp)
     
+    @app.errorhandler(404)
+    def page_not_found(e):
+        flash("Page not found", "warning")
+        return redirect(url_for('main.index'))
+
     return app
 
 
