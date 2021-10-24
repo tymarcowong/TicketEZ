@@ -3,6 +3,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask import render_template
 
 db = SQLAlchemy()
 
@@ -49,10 +50,6 @@ def create_app():
     
     @app.errorhandler(404)
     def page_not_found(e):
-        flash("Page not found", "warning")
-        return redirect(url_for('main.index'))
+        return render_template('404.html'), 404
 
     return app
-
-
-
