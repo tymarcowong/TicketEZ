@@ -96,5 +96,5 @@ def register():
 def logout():
     logout_user()
     flash(f"You have been logged out.", "info")
-    return render_template("index.html")
+    return redirect(url_for("main.index"))
 

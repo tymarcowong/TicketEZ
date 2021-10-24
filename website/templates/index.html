@@ -22,76 +22,33 @@
 
   <!-- Displays the 3 newest events in cards -->
   <div class="row">
+    {% for event in events_newest %}
     <div class="col-md-4">
       <div class="card mb-3">
         <img
-          src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
+          src="{{event.image}}"
           class="card-img-top"
-          alt="image for the event"
+          alt="Image for the event"
         />
         <p class="text-end upcoming mt-2 me-2">
-          <strong>Upcoming</strong>
+          <strong>{{event.status}}</strong>
         </p>
 
         <div class="mx-3">
-          <h3>Kenshi Yonezu</h3>
-          <h4>Yonezu Kenshi 2021 Tour</h4>
-          <p>
-            <strong>Location: </strong>2-3 Kitanomarukoen, Chiyoda City, Tokyo
-            102-8321, Japan
-          </p>
-          <p><strong>Date: </strong>31/10/2021</p>
+          <h3>{{event.artist_name}}</h3>
+          <h4>{{event.event_name}}</h4>
+          <p><strong>Location: </strong>{{event.location}}</p>
+          <p><strong>Date: </strong>{{event.date}}</p>
         </div>
 
-        <a href="event.html" class="btn btn-primary">Details</a>
+        <a
+          href="{{url_for('event.show', id = event.id)}}"
+          class="btn btn-primary"
+          >Details</a
+        >
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img
-          src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
-          class="card-img-top"
-          alt="image for the event"
-        />
-        <p class="text-end upcoming mt-2 me-2">
-          <strong>Upcoming</strong>
-        </p>
-        <div class="mx-3">
-          <h3>Kenshi Yonezu</h3>
-          <h4>Yonezu Kenshi 2021 Tour</h4>
-          <p>
-            <strong>Location: </strong>2-3 Kitanomarukoen, Chiyoda City, Tokyo
-            102-8321, Japan
-          </p>
-          <p><strong>Date: </strong>31/10/2021</p>
-        </div>
-
-        <a href="event.html" class="btn btn-primary">Details</a>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <img
-          src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
-          class="card-img-top"
-          alt="image for the event"
-        />
-        <p class="text-end upcoming mt-2 me-2">
-          <strong>Upcoming</strong>
-        </p>
-        <div class="mx-3">
-          <h3>Kenshi Yonezu</h3>
-          <h4>Yonezu Kenshi 2021 Tour</h4>
-          <p>
-            <strong>Location: </strong>2-3 Kitanomarukoen, Chiyoda City, Tokyo
-            102-8321, Japan
-          </p>
-          <p><strong>Date: </strong>31/10/2021</p>
-        </div>
-
-        <a href="event.html" class="btn btn-primary">Details</a>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 
   <!-- Browse events -->
@@ -139,60 +96,31 @@
   <!-- Events list -->
 
   <!-- Event card 1 -->
+  {% for event in events %}
   <div class="row border-bottom my-2 event-hori">
     <div class="col-md-6 col-lg-5 col-xl-4">
       <img
         class="hori-card-img"
-        src="https://d38fgd7fmrcuct.cloudfront.net/1_3vmufg2nxdk5pxma6e0b6.jpg"
-        alt="image for the event"
+        src="{{event.image}}"
+        alt="Image for the event"
       />
     </div>
     <div class="col-md-6 col-lg-7 col-xl-8">
       <div class="results">
         <p class="text-end upcoming mt-2 me-2">
-          <strong>Upcoming</strong>
+          <strong>{{event.status}}</strong>
         </p>
-        <h3>YOASOBI</h3>
-        <h4>KEEP OUT THEATER</h4>
-        <p>
-          31/10/2021, Online Lorem ipsum dolor, sit amet consectetur adipisicing
-          elit. Quaerat iure consequatur veritatis atque minus. Fugiat
-          consequuntur minus reprehenderit beatae eum ratione esse aut. Deleniti
-          vel ea consectetur animi aperiam repudiandae rem, dolor similique ipsa
-          velit quasi itaque! Eaque voluptatibus placeat iste deleniti mollitia,
-          dolorem cum blanditiis sunt tenetur libero, voluptatem error hic
-          adipisci repudiandae maiores praesentium deserunt, doloribus
-          distinctio aperiam suscipit modi neque laborum in! Modi ab, dicta
-          magni reprehenderit minus corporis quis laborum sequi harum magnam
-          maiores amet. Eum natus non magnam quo illo voluptas? Accusamus
-          aspernatur, ipsam explicabo blanditiis exercitationem cumque,
-          veritatis nostrum libero quia quidem, aperiam cupiditate!
-        </p>
-        <a class="btn btn-primary mb-3" href="event.html">Details</a>
+        <h3>{{event.artist_name}}</h3>
+        <h4>{{event.event_name}}</h4>
+        <p>{{event.date}}, {{event.genre}}</p>
+        <a
+          class="btn btn-primary mb-3"
+          href="{{url_for('event.show', id = event.id)}}"
+          >View Details</a
+        >
       </div>
     </div>
   </div>
-
-  <!-- Event card 2 -->
-  <div class="row border-bottom my-2 event-hori">
-    <div class="col-md-6 col-lg-5 col-xl-4">
-      <img
-        class="hori-card-img"
-        src="https://static.billboard.com/files/media/Kenshi-Yonezu-2019-cr-Tomokazu-Yamada-billboard-1548-compressed.jpg"
-        alt="image for the event"
-      />
-    </div>
-    <div class="col-md-6 col-lg-7 col-xl-8">
-      <div class="results">
-        <p class="text-end upcoming mt-2 me-2">
-          <strong>Upcoming</strong>
-        </p>
-        <h3>YOASOBI</h3>
-        <h4>KEEP OUT THEATER</h4>
-        <p>31/10/2021, Online</p>
-        <a class="btn btn-primary mb-3" href="event.html">Details</a>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 </div>
 {% endblock %}
