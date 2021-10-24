@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% import "bootstrap/wtf.html" as wtf %}
 <!-- Title -->
 {% block title %} - Name of the Concert{% endblock %}
 
@@ -162,26 +162,18 @@
             aria-label="Close"
           ></button>
         </div>
-        <form>
-          <div class="modal-body">
-            <div>
-              <label for="bookTicketAmount" class="form-label"
-                >Please enter the number of tickets you want to book</label
-              >
-              <input type="number" class="form-control" id="bookTicketAmount" />
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="submit" class="btn btn-primary">Place Order</button>
-          </div>
-        </form>
+        <div class="modal-body">
+          {{wtf.quick_form(booking_form, "{0}/booking".format(id))}}
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   </div>
