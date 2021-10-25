@@ -132,6 +132,7 @@ def comment(id):
     return redirect(url_for("event.show", id=id))
 
 
+
 @bp.route('/<int:id>/booking', methods=['GET', 'POST'])
 @login_required
 def booking(id):
