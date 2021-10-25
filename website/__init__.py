@@ -1,5 +1,5 @@
 # import flask - from the package import class
-from flask import Flask 
+from flask import Flask, url_for, redirect, flash
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager

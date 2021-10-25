@@ -58,7 +58,7 @@
     </div>
   </div>
 
-  <form>
+  <form action="{{url_for('main.search')}}">
     <div class="row">
       <div class="col-md-6 my-3">
         <label for="search-artist">Search by Artist</label>
@@ -66,7 +66,7 @@
           type="text"
           class="form-control mt-2"
           id="search-artist"
-          placeholder="Artist"
+          name="search-artist"
         />
       </div>
 
@@ -76,17 +76,18 @@
           class="form-select mt-2"
           id="search-category"
           aria-label="Default select example"
+          name="search-category"
         >
-          <option selected>Select...</option>
-          <option>Hip Hop/Rap</option>
-          <option>EDM</option>
-          <option>R&B</option>
-          <option>Punk</option>
-          <option>Rock</option>
-          <option>House</option>
-          <option>Country</option>
-          <option>Metal</option>
-          <option>Jazz</option>
+          <option selected value="">Select...</option>
+          <option value="Coutnry">Country</option>
+          <option value="Electronic">Electronic</option>
+          <option value="Funk">Funk</option>
+          <option value="Hiphop">Hop Hip</option>
+          <option value="Jazz">Jazz</option>
+          <option value="House">House</option>
+          <option value="Pop">Pop</option>
+          <option value="Rap">Rap</option>
+          <option value="Rock">Rock</option>
         </select>
       </div>
     </div>
