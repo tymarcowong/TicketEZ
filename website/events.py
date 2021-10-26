@@ -136,10 +136,21 @@ def comment(id):
 @bp.route('/<int:id>/booking', methods=['GET', 'POST'])
 @login_required
 def booking(id):
+    event = Event.query.filter_by(id=id).first()
+    book = Booking.query.filter_by(id=id).first()
     booking_form = BookingForm()
     if booking_form.validate_on_submit():
+        # get data from the form
+        ticket_order = booking_form.num_tickets.data
+
+        if (ticket_order > event.num_tickets):
+            flash(f"Too many tickets booked", "error")
+            return redirect(url_for('event.show', id=id))
+            
+        New_num_tickets = event.num_tickets - ticket_order
+        event.num_tickets = New_num_tickets
         booking = Booking(
-            num_tickets = booking_form.num_tickets.data,
+            num_tickets = ticket_order,
             user_id = current_user.id,
             event_id = id)
         db.session.add(booking)
