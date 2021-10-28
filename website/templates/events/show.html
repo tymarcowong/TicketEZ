@@ -13,13 +13,18 @@
 </div>
 
 <div class="container">
+  {% if display_edit_button %}
   <div class="row">
     <div class="col">
-      <button class="my-2 btn btn-primary float-end mt-2 me-2 mb-0">
+      <a
+        href="{{url_for('event.edit', id = event.id)}}"
+        class="my-2 btn btn-primary float-end mt-2 me-2 mb-0"
+      >
         Edit Event
-      </button>
+      </a>
     </div>
   </div>
+  {% endif %}
 
   <div class="row">
     <div class="col-md-6 event-status-container order-md-2">
@@ -52,7 +57,7 @@
             d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
           />
         </svg>
-        <strong>Date and Time: </strong>{{event.date}} (GMT+9)
+        <strong>Date and Time: </strong>{{event.date}}
       </p>
 
       <p>
@@ -185,113 +190,29 @@
     </div>
   </div>
 
+  {% if current_user.is_authenticated %}
   <div class="row">
-    <div class="col d-flex justify-content-start">
-      <img
-        src="img/users/null.jpg"
-        alt="User icon"
-        class="comment-icon rounded-circle d-inline-flex"
-      />
-      <div class="ms-3 flex-grow-1">
-        <form class="write-comments">
-          <input
-            type="text"
-            class="form-control"
-            id="event-name"
-            placeholder="Write comment here..."
-          />
-          <button class="btn btn-primary my-3 float-end" type="submit">
-            Post Comment
-          </button>
-        </form>
-      </div>
+    <div class="col comment-form">
+      {{wtf.quick_form(comment_form, "{0}/comment".format(id))}}
     </div>
   </div>
-
-  <!-- Comment 1 -->
+  {% endif %} {% for comment in event.comments %}
   <div class="row mb-0">
-    <div class="col d-flex justify-content-start">
-      <img
-        src="img/users/null.jpg"
-        alt="User icon"
-        class="comment-icon rounded-circle d-inline-flex"
-      />
-      <div class="ms-3">
-        <p class="m-0">User Name 1</p>
-        <p class="m-0">
-          <span class="text-muted">Post on 18/09/2021</span>
-        </p>
-      </div>
+    <div class="col">
+      <p class="m-0">
+        {{comment.user.name}}
+        <span class="text-muted"
+          >Posted at {{comment.posted_at.strftime("%I:%M %p - %D") }}</span
+        >
+      </p>
     </div>
   </div>
 
   <div class="row border-bottom mt-1 mb-2">
     <div class="col">
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-        esse, non expedita beatae illum facere optio sit nesciunt similique eos?
-      </p>
+      <p>{{comment.text}}</p>
     </div>
   </div>
-
-  <!-- Comment 2 -->
-  <div class="row mb-0">
-    <div class="col d-flex justify-content-start">
-      <img
-        src="img/users/null.jpg"
-        alt="User icon"
-        class="comment-icon rounded-circle d-inline-flex"
-      />
-      <div class="ms-3">
-        <p class="m-0">User Name 2</p>
-        <p class="m-0">
-          <span class="text-muted">Post on 29/09/2021</span>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="row border-bottom mt-1 mb-2">
-    <div class="col">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, nemo.
-      </p>
-    </div>
-  </div>
-
-  <!-- Comment 3 -->
-  <div class="row mb-0">
-    <div class="col d-flex justify-content-start">
-      <img
-        src="img/users/null.jpg"
-        alt="User icon"
-        class="comment-icon rounded-circle d-inline-flex"
-      />
-      <div class="ms-3">
-        <p class="m-0">User Name 3</p>
-        <p class="m-0">
-          <span class="text-muted">Post on 30/09/2021</span>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="row border-bottom mt-1 mb-2">
-    <div class="col">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-        reprehenderit eius incidunt? Provident ullam adipisci animi quibusdam
-        vitae minus, ipsa eligendi magnam cumque eum ex, voluptatem id. Quas
-        inventore velit, libero dolore impedit corporis beatae soluta aliquam
-        vel, sapiente cupiditate ipsum nobis fugit repudiandae alias molestiae
-        quisquam distinctio ab! Laborum eveniet dolor omnis sunt, ad reiciendis.
-        Tenetur eligendi mollitia, ullam deserunt reprehenderit dolorem dolor
-        quos et sit voluptate cumque, distinctio esse. Porro commodi explicabo
-        provident doloribus libero fugiat minima maxime officiis ut beatae
-        suscipit incidunt quasi quae est reprehenderit iste, ratione voluptatem
-        molestiae quos deleniti! Saepe molestiae cum voluptatum eligendi.
-      </p>
-    </div>
-  </div>
+  {% endfor %}
 </div>
 {% endblock %}

@@ -56,6 +56,7 @@ main {
 .btn-default {
   background-image: linear-gradient(30deg, var(--clr-purple), var(--clr-pink));
   border: none;
+  color: var(--clr-offwhite);
 }
 
 .jumbotronback {
@@ -92,25 +93,25 @@ form li,
   box-shadow: none;
 }
 
-#event-details-form input {
+.event-details-form input {
   display: block;
 }
 
-#event-details-form label {
+.event-details-form label {
   margin: 1em 0 0.5em;
 }
 
-#event-details-form .form-control {
+.event-details-form .form-control {
   border: 2px solid var(--clr-magenta);
   background-color: white;
   color: var(--clr-black);
 }
 
-#event-details-form .form-control:focus {
+.event-details-form .form-control:focus {
   border: 2px solid var(--clr-purple);
 }
 
-#event-details-form .btn {
+.event-details-form .btn {
   margin: 2em 0;
 }
 
@@ -164,14 +165,13 @@ form li,
   color: var(--clr-offwhite);
 }
 
-/* Form submit button */
 .account-box input:last-of-type,
-#event-details-form input:last-of-type {
+.event-details-form input:last-of-type {
   width: 100%;
 }
 
 .account-box .form-control,
-.write-comments .form-control {
+.comment-form .form-control {
   border: none;
   border-bottom: 2px solid var(--clr-offwhite);
   border-radius: 0;
@@ -179,8 +179,12 @@ form li,
 }
 
 .account-box .form-control:focus,
-.write-comments .form-control:focus {
+.comment-form .form-control:focus {
   border-bottom: 2px solid var(--clr-purple);
+}
+
+.comment-form input {
+  margin-bottom: 1.5em;
 }
 
 /* map */
