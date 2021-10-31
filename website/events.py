@@ -143,7 +143,7 @@ def booking(id):
     event = Event.query.filter_by(id=id).first()
     book = Booking.query.filter_by(id=id).first()
     booking_form = BookingForm()
-    if booking_form.validate_on_submit():
+    if (booking_form.validate_on_submit() == True):
         # get data from the form
         ticket_order = booking_form.num_tickets.data
 
@@ -164,6 +164,11 @@ def booking(id):
         db.session.add(booking)
         db.session.commit()
         flash(f'Booking has been made', 'success')
+        
+    if (booking_form.validate_on_submit() == False):
+        flash(f"Invalid amount of tickets", "error")
+        return redirect(url_for('event.show', id=id))
+
     return redirect(url_for('event.show', id=id))
 
 
