@@ -67,7 +67,7 @@ def create():
         flash(f'Successfully created new event', 'success')
 
         return redirect(url_for('event.show', id=event.id))
-    return render_template('events/create.html', form=event_form, heading="Create Event")
+    return render_template('events/create.html', form=event_form)
 
 
 @bp.route('/<int:id>/edit', methods=['GET', 'POST'])
@@ -78,7 +78,6 @@ def edit(id):
         flash(f'You must be the creator of the event to edit the details!', 'warning')
         return redirect(url_for('event.show', id=event.id))
     
-   
     event_edit_form = EventEditForm()
     if event_edit_form.validate_on_submit():
         if event_edit_form.event_name.data != "":
@@ -114,8 +113,21 @@ def edit(id):
         flash(f'Successfully updated event details', 'success')
 
         return redirect(url_for('event.show', id=event.id))
-    return render_template('events/create.html', form=event_edit_form, heading="Create Event")
+    return render_template('events/edit.html', form=event_edit_form)
 
+
+@bp.route("/<int:id>/delete")
+@login_required
+def delete(id):
+    event = Event.query.filter_by(id=id).first()
+    if login_user_is_creator(current_user, event.created_by) == False:
+        flash(f'You must be the creator of the event to delete the event!', 'warning')
+        return redirect(url_for('event.show', id=event.id))
+    Event.query.filter_by(id=id).delete()
+    db.session.commit()
+    flash(f'Successfully deleted event', 'success')
+    return redirect(url_for('main.index'))
+  
 
 @bp.route('/<int:id>/comment', methods=['GET', 'POST'])
 @login_required

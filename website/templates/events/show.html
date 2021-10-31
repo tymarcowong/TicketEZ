@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% import "bootstrap/wtf.html" as wtf %}
 <!-- Title -->
-{% block title %} - Name of the Concert{% endblock %}
+{% block title %} - {{event.event_name}}{% endblock %}
 
 <!-- Content -->
 {% block content %}
@@ -16,6 +16,12 @@
   {% if display_edit_button %}
   <div class="row">
     <div class="col">
+      <a
+        href="{{url_for('event.delete', id = event.id)}}"
+        class="my-2 btn btn-primary float-end mt-2 me-2 mb-0"
+      >
+        Delete
+      </a>
       <a
         href="{{url_for('event.edit', id = event.id)}}"
         class="my-2 btn btn-primary float-end mt-2 me-2 mb-0"
