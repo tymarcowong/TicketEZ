@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, DateTimeField, SelectField
-from wtforms.fields.html5 import DateTimeField, DateTimeLocalField
-from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange
+from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, SelectField
+from wtforms.fields.html5 import DateField
+from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange, DataRequired
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILES = ["PNG", "JPG", "png", "jpg", "JPEG", "jpeg"]
@@ -43,7 +43,8 @@ class EventForm(FlaskForm):
     genre = SelectField("Genre", choices=[("", "--Please select genre--"), ("Country", "Country"), ("Electronic", "Electronic"),
                                           ("Funk", "Funk"), ("Hiphop", "Hip Hop"), ("Jazz", "Jazz"), ("House", "House"), 
                                           ("Pop", "Pop"), ("Rap", "Rap"), ("Rock", "Rock")], validators=[genre_field_check])
-    datetime = StringField('Date and Time', validators=[InputRequired()])
+    date = DateField('Date', validators=[InputRequired()])
+    time = StringField("Time", validators=[InputRequired()])
     location = StringField('Location', validators=[InputRequired()])
     description = TextAreaField('Description', validators=[InputRequired()])
     image = FileField('Event Image', validators=[FileRequired(), FileAllowed(
@@ -62,7 +63,8 @@ class EventEditForm(FlaskForm):
     genre = SelectField("Genre", choices=[("", "--Please select genre--"), ("Country", "Country"), ("Electronic", "Electronic"),
                                           ("Funk", "Funk"), ("Hiphop", "Hip Hop"), ("Jazz", "Jazz"), ("House", "House"), 
                                           ("Pop", "Pop"), ("Rap", "Rap"), ("Rock", "Rock")])
-    datetime = StringField('Date and Time', validators=[])
+    date = DateField('Date', validators=[])
+    time = StringField("Time", validators=[])
     location = StringField('Location', validators=[])
     description = TextAreaField('Description', validators=[])
     image = FileField('Event Image', validators=[FileAllowed(

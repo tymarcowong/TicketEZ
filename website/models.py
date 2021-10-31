@@ -46,6 +46,7 @@ class Event(db.Model):
     artist_name = db.Column(db.String(50), nullable=False)
     genre = db.Column(db.String(20), nullable=False)
     date = db.Column(db.Date, nullable=False)
+    time = db.Column(db.String(20), nullable=False)
     location = db.Column(db.String(200), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
     image = db.Column(db.String(500), nullable=False)

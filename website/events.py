@@ -47,15 +47,14 @@ def create():
             artist_name=event_form.artist_name.data,
             status=event_form.status.data,
             genre=event_form.genre.data,
-            # update datetime format later
-            # date = event_form.datetime.data,
-            date=datetime(2021, 10, 16),
+            date=event_form.date.data,
+            time=event_form.time.data,
             location=event_form.location.data,
             description=event_form.description.data,
             image=check_event_img_file(event_form),
             price=event_form.price.data,
             num_tickets=event_form.num_tickers.data,
-            created_by=current_user.id,
+            created_by=current_user.id
         )
         if event.num_tickets == 0:
             event.status = "Booked"
@@ -88,10 +87,10 @@ def edit(id):
             event.status = event_edit_form.status.data
         if event_edit_form.genre.data != "":
             event.genre = event_edit_form.genre.data
-        if event_edit_form.datetime.data != "":
-        #  update datetime format later
-        #  date = event_edit_form.datetime.data,
-            event.date = datetime(2021, 10, 16)
+        if event_edit_form.date.data != "":
+            event.date = event_edit_form.date.data
+        if event_edit_form.time.data != "":
+            event.time = event_edit_form.time.data
         if event_edit_form.location.data != "":
             event.location = event_edit_form.location.data
         if event_edit_form.description.data != "":
