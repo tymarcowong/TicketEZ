@@ -51,7 +51,6 @@ class Event(db.Model):
     genre = db.Column(db.String(20), nullable=False)
     date = db.Column(db.Date, nullable=False)
     location = db.Column(db.String(200), nullable=False)
-    google_map = db.Column(db.String(500), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
     image = db.Column(db.String(500), nullable=False)
     price = db.Column(db.Integer, nullable=False)
