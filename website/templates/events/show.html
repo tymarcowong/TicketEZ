@@ -28,9 +28,11 @@
 
   <div class="row">
     <div class="col-md-6 event-status-container order-md-2">
-      <p class="text-end event-status upcoming me-4 mt-3">
-        <strong>{{event.status}}</strong>
-      </p>
+      <div class="d-flex justify-content-end">
+        <p class="d-inline status {{event.status}} mt-2 me-2 p-2">
+          <strong>{{event.status}}</strong>
+        </p>
+      </div>
     </div>
     <div class="col-md-6 order-md-1">
       <h2 class="my-3">{{event.artist_name}}</h2>
