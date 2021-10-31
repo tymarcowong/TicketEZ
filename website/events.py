@@ -57,6 +57,8 @@ def create():
             num_tickets=event_form.num_tickers.data,
             created_by=current_user.id,
         )
+        if event.num_tickets == 0:
+            event.status = "Booked"
         # add the object to the db session
         db.session.add(event)
         # commit to the database
@@ -101,6 +103,10 @@ def edit(id):
             event.price = event_edit_form.price.data
         if event_edit_form.num_tickers.data is not None :
             event.num_tickets = event_edit_form.num_tickers.data
+            if event.num_tickets == 0:
+                event.status = "Booked"
+            else:
+                event.status = "Active"
 
         # commit to the database
         db.session.commit()
@@ -131,7 +137,6 @@ def comment(id):
     return redirect(url_for("event.show", id=id))
 
 
-
 @bp.route('/<int:id>/booking', methods=['GET', 'POST'])
 @login_required
 def booking(id):
@@ -146,8 +151,12 @@ def booking(id):
             flash(f"Too many tickets booked", "error")
             return redirect(url_for('event.show', id=id))
             
-        New_num_tickets = event.num_tickets - ticket_order
-        event.num_tickets = New_num_tickets
+        new_num_tickets = event.num_tickets - ticket_order
+        event.num_tickets = new_num_tickets
+        
+        if new_num_tickets == 0:
+            event.status = "Booked"
+
         booking = Booking(
             num_tickets = ticket_order,
             user_id = current_user.id,
