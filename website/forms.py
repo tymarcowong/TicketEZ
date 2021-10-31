@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, SelectField
 from wtforms.fields.html5 import DateField
-from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange, DataRequired
+from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILES = ["PNG", "JPG", "png", "jpg", "JPEG", "jpeg"]
@@ -23,21 +23,21 @@ class LoginForm(FlaskForm):
 
 # registration form
 class RegisterForm(FlaskForm):
-    user_name = StringField("User Name", validators=[InputRequired()])
+    user_name = StringField("User Name", validators=[InputRequired(), Length(min=4)])
     email_id = StringField("Email Address", validators=[
-                           InputRequired(), Email("Please enter a valid email")])
+                           InputRequired(), Email("Please enter a valid email"), Length(min=6)])
     contact = IntegerField("Contact Number", validators=[
                            InputRequired('Please enter a valid contact number')])
     address = StringField("Address", validators=[
-                          InputRequired('Please enter your address')])
+                          InputRequired('Please enter your address'), Length(min=4)])
     password = PasswordField("Password", validators=[InputRequired(), EqualTo(
         'confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password", validators=[InputRequired()])
 
 # create event form
 class EventForm(FlaskForm):
-    event_name = StringField('Event Name', validators=[InputRequired()])
-    artist_name = StringField('Artist Name', validators=[InputRequired()])
+    event_name = StringField('Event Name', validators=[InputRequired(), Length(min=2)])
+    artist_name = StringField('Artist Name', validators=[InputRequired(), Length(min=3)])
     status = SelectField("Status", choices=[("", "--Please select status--"),
                                             ("Active", "Active"), ("Upcoming", "Upcoming"), ("Inactive", "Inactive")], validators=[status_field_check])
     genre = SelectField("Genre", choices=[("", "--Please select genre--"), ("Country", "Country"), ("Electronic", "Electronic"),
@@ -49,7 +49,7 @@ class EventForm(FlaskForm):
     description = TextAreaField('Description', validators=[InputRequired()])
     image = FileField('Event Image', validators=[FileRequired(), FileAllowed(
         ALLOWED_FILES, message=f"Accepted file types: {ALLOWED_FILES}")])
-    price = StringField('Price', validators=[InputRequired()])
+    price = StringField('Price', validators=[InputRequired(), Length(min=1)])
     num_tickers = IntegerField(
         "Number of Tickets", validators=[InputRequired(), NumberRange(min=0)])
     submit = SubmitField()
@@ -76,7 +76,7 @@ class EventEditForm(FlaskForm):
 
 # comment form
 class CommentForm(FlaskForm):
-    text = StringField('Leave a comment here!', validators=[InputRequired()])
+    text = StringField('Leave a comment here!', validators=[InputRequired(), Length(min=3)])
     submit = SubmitField('Create')
 
 
