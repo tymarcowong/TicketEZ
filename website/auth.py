@@ -80,14 +80,6 @@ def register():
     # GET
     return render_template("user.html", heading="Register", form=register_form)
 
-    # register_form = RegisterForm()
-    # if register_form.validate_on_submit():
-    #     # POST
-    #     flash(f"Successfully registered, {register_form.user_name.data}!", "primary")
-    #     return redirect(url_for("auth.login"))
-    # # GET
-
-    # return render_template("user.html", heading="Register", form=register_form)
 
 
 
