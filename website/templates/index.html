@@ -30,7 +30,7 @@
           class="card-img-top"
           alt="Image for the event"
         />
-        <p class="text-end upcoming mt-2 me-2">
+        <p class="text-end mt-2 me-2 {{event.status}}">
           <strong>{{event.status}}</strong>
         </p>
 
@@ -108,9 +108,12 @@
     </div>
     <div class="col-md-6 col-lg-7 col-xl-8">
       <div class="results">
-        <p class="text-end upcoming mt-2 me-2">
-          <strong>{{event.status}}</strong>
-        </p>
+        <div class="d-flex justify-content-end">
+          <p class="d-inline status {{event.status}} mt-2 me-2 p-2">
+            <strong>{{event.status}}</strong>
+          </p>
+        </div>
+
         <h3>{{event.artist_name}}</h3>
         <h4>{{event.event_name}}</h4>
         <p>{{event.date}}, {{event.genre}}</p>

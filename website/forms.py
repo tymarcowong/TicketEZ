@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, DateTimeField, SelectField
 from wtforms.fields.html5 import DateTimeField, DateTimeLocalField
-from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError
+from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILES = ["PNG", "JPG", "png", "jpg", "JPEG", "jpeg"]
@@ -51,7 +51,7 @@ class EventForm(FlaskForm):
         ALLOWED_FILES, message=f"Accepted file types: {ALLOWED_FILES}")])
     price = StringField('Price', validators=[InputRequired()])
     num_tickers = IntegerField(
-        "Number of Tickets", validators=[InputRequired()])
+        "Number of Tickets", validators=[InputRequired(), NumberRange(min=0)])
     submit = SubmitField()
 
 # edit event form
@@ -68,9 +68,9 @@ class EventEditForm(FlaskForm):
     description = TextAreaField('Description', validators=[])
     image = FileField('Event Image', validators=[FileAllowed(
         ALLOWED_FILES, message=f"Accepted file types: {ALLOWED_FILES}")])
-    price = IntegerField('Price', validators=[Optional()])
+    price = IntegerField('Price', validators=[Optional(), NumberRange(min=0)])
     num_tickers = IntegerField(
-        "Number of Tickets", validators=[Optional()])
+        "Number of Tickets", validators=[Optional(), NumberRange(min=0)])
     submit = SubmitField()
 
 # comment form
@@ -81,7 +81,7 @@ class CommentForm(FlaskForm):
 
 class BookingForm(FlaskForm):
     num_tickets = IntegerField(
-        'Number of Tickets', validators=[InputRequired()])
+        'Number of Tickets', validators=[InputRequired(), NumberRange(min=1)])
     submit = SubmitField()
 
 

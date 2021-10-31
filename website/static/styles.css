@@ -194,20 +194,25 @@ form li,
 }
 
 /* event status */
-.upcoming {
-  color: greenyellow;
+.status {
+  background-color: rgb(50, 50, 50);
+  border-radius: 1em;
 }
 
-.inactive {
+.Upcoming {
+  color: #317b22;
+}
+
+.Inactive {
   color: grey;
 }
 
-.booked {
-  color: yellow;
+.Booked {
+  color: rgb(226, 226, 107);
 }
 
-.cancelled {
-  color: red;
+.Active {
+  color: #317b22;
 }
 
 /* Media Queries are set based on Bootstrap container breakpoints */
