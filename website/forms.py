@@ -1,13 +1,18 @@
 from flask_wtf import FlaskForm
 from wtforms.fields import TextAreaField, SubmitField, StringField, PasswordField, IntegerField, DateTimeField, SelectField
 from wtforms.fields.html5 import DateTimeField, DateTimeLocalField
-from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional
+from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 ALLOWED_FILES = ["PNG", "JPG", "png", "jpg", "JPEG", "jpeg"]
 
-# creates the login information
+def genre_field_check(form, field):
+    if field.data == "":
+        raise ValidationError("Please select a genre!")
 
+def status_field_check(form, field):
+    if field.data == "":
+        raise ValidationError("Please select a status!")
 
 class LoginForm(FlaskForm):
     user_name = StringField("User Name", validators=[
@@ -34,10 +39,10 @@ class EventForm(FlaskForm):
     event_name = StringField('Event Name', validators=[InputRequired()])
     artist_name = StringField('Artist Name', validators=[InputRequired()])
     status = SelectField("Status", choices=[("", "--Please select status--"),
-                                            ("Active", "Active"), ("Upcoming", "Upcoming"), ("Inactive", "Inactive")])
+                                            ("Active", "Active"), ("Upcoming", "Upcoming"), ("Inactive", "Inactive")], validators=[status_field_check])
     genre = SelectField("Genre", choices=[("", "--Please select genre--"), ("Country", "Country"), ("Electronic", "Electronic"),
                                           ("Funk", "Funk"), ("Hiphop", "Hip Hop"), ("Jazz", "Jazz"), ("House", "House"), 
-                                          ("Pop", "Pop"), ("Rap", "Rap"), ("Rock", "Rock")])
+                                          ("Pop", "Pop"), ("Rap", "Rap"), ("Rock", "Rock")], validators=[genre_field_check])
     datetime = StringField('Date and Time', validators=[InputRequired()])
     location = StringField('Location', validators=[InputRequired()])
     google_map = StringField('Google Map Link', validators=[InputRequired()])
@@ -78,3 +83,5 @@ class BookingForm(FlaskForm):
     num_tickets = IntegerField(
         'Number of Tickets', validators=[InputRequired()])
     submit = SubmitField()
+
+
