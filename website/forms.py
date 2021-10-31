@@ -45,7 +45,6 @@ class EventForm(FlaskForm):
                                           ("Pop", "Pop"), ("Rap", "Rap"), ("Rock", "Rock")], validators=[genre_field_check])
     datetime = StringField('Date and Time', validators=[InputRequired()])
     location = StringField('Location', validators=[InputRequired()])
-    google_map = StringField('Google Map Link', validators=[InputRequired()])
     description = TextAreaField('Description', validators=[InputRequired()])
     image = FileField('Event Image', validators=[FileRequired(), FileAllowed(
         ALLOWED_FILES, message=f"Accepted file types: {ALLOWED_FILES}")])

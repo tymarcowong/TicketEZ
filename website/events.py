@@ -56,7 +56,6 @@ def create():
             price=event_form.price.data,
             num_tickets=event_form.num_tickers.data,
             created_by=current_user.id,
-            google_map="k"  
         )
         if event.num_tickets == 0:
             event.status = "Booked"
