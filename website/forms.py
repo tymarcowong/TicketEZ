@@ -4,15 +4,19 @@ from wtforms.fields.html5 import DateField
 from wtforms.validators import InputRequired, Length, Email, EqualTo, Optional, ValidationError, NumberRange
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
+
 ALLOWED_FILES = ["PNG", "JPG", "png", "jpg", "JPEG", "jpeg"]
+
 
 def genre_field_check(form, field):
     if field.data == "":
         raise ValidationError("Please select a genre!")
 
+
 def status_field_check(form, field):
     if field.data == "":
         raise ValidationError("Please select a status!")
+
 
 class LoginForm(FlaskForm):
     user_name = StringField("User Name", validators=[
@@ -21,7 +25,6 @@ class LoginForm(FlaskForm):
                              InputRequired('Enter user password')])
 
 
-# registration form
 class RegisterForm(FlaskForm):
     user_name = StringField("User Name", validators=[InputRequired(), Length(min=4)])
     email_id = StringField("Email Address", validators=[
@@ -34,7 +37,7 @@ class RegisterForm(FlaskForm):
         'confirm', message="Passwords should match")])
     confirm = PasswordField("Confirm Password", validators=[InputRequired()])
 
-# create event form
+
 class EventForm(FlaskForm):
     event_name = StringField('Event Name', validators=[InputRequired(), Length(min=2)])
     artist_name = StringField('Artist Name', validators=[InputRequired(), Length(min=3)])
@@ -54,7 +57,7 @@ class EventForm(FlaskForm):
         "Number of Tickets", validators=[InputRequired(), NumberRange(min=0)])
     submit = SubmitField()
 
-# edit event form
+
 class EventEditForm(FlaskForm):
     event_name = StringField('Event Name', validators=[])
     artist_name = StringField('Artist Name', validators=[])
@@ -74,7 +77,7 @@ class EventEditForm(FlaskForm):
         "Number of Tickets", validators=[Optional(), NumberRange(min=0)])
     submit = SubmitField()
 
-# comment form
+
 class CommentForm(FlaskForm):
     text = StringField('Leave a comment here!', validators=[InputRequired(), Length(min=3)])
     submit = SubmitField('Create')

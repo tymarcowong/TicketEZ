@@ -9,15 +9,11 @@ from .forms import CommentForm, EventForm, BookingForm, EventEditForm
 from .models import Event, Comment, Booking
 
 
-# from .models import Destination, Comment
-# from .forms import DestinationForm, CommentForm
-
 bp = Blueprint('event', __name__, url_prefix='/events')
+
 
 EVENT_GENRES = ["Country", "Electronic", "Funk",
                 "Hip Hop", "Jazz", "House", "Pop", "Rap", "Rock"]
-
-# route for events based on the ID provided form the URL
 
 
 @bp.route('/<int:id>')
@@ -28,7 +24,7 @@ def show(id):
     booking_form = BookingForm()
     # # error handling
     if event is None:
-        flash(f"Cound not find a destination!", "warning")
+        flash(f"Cound not find a event!", "warning")
         return redirect(url_for("main.index"))
 
     # return render_template('events/show.html', event=event, form=comment_form, id=id)
@@ -36,7 +32,6 @@ def show(id):
         event=event, id=id, display_edit_button = login_user_is_creator(current_user, event.created_by))
 
 
-# route to the event create page
 @bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
@@ -106,7 +101,6 @@ def edit(id):
             else:
                 event.status = "Active"
 
-        # commit to the database
         db.session.commit()
 
         flash(f'Successfully updated event details', 'success')
@@ -133,7 +127,6 @@ def delete(id):
 def comment(id):
     comment_form = CommentForm()
     if comment_form.validate_on_submit():
-        # POST
         comment = Comment(text = comment_form.text.data,
                           # change user id after login function is implemented - Marco
                           user_id = current_user.id,
@@ -142,9 +135,8 @@ def comment(id):
 
         db.session.add(comment)
         db.session.commit()
-        # save to database
+
         flash(f"Comments successfully posted", "success")
-    # GET
     return redirect(url_for("event.show", id=id))
 
 
@@ -152,10 +144,8 @@ def comment(id):
 @login_required
 def booking(id):
     event = Event.query.filter_by(id=id).first()
-    book = Booking.query.filter_by(id=id).first()
     booking_form = BookingForm()
     if (booking_form.validate_on_submit() == True):
-        # get data from the form
         ticket_order = booking_form.num_tickets.data
 
         if (ticket_order > event.num_tickets):
@@ -172,9 +162,11 @@ def booking(id):
             num_tickets = ticket_order,
             user_id = current_user.id,
             event_id = id)
+
         db.session.add(booking)
         db.session.commit()
-        flash(f'Booking has been made', 'success')
+
+        flash(f'{booking.num_tickets} tickets has been booked! Booking ID: {booking.id}', 'success')
         
     if (booking_form.validate_on_submit() == False):
         flash(f"Invalid amount of tickets", "error")

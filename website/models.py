@@ -21,8 +21,6 @@ class Booking(db.Model):
     __tablename__ = 'booking'
     id = db.Column(db.Integer, primary_key=True)
     num_tickets = db.Column(db.Integer, index=True, nullable=False)
-
-    # change to FK
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -32,8 +30,6 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(400))
     posted_at = db.Column(db.DateTime, default=datetime.now())
-
-    # foreign keys
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -52,8 +48,6 @@ class Event(db.Model):
     image = db.Column(db.String(500), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     num_tickets = db.Column(db.Integer, nullable=False)
-
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
-
     comments = db.relationship('Comment', backref='event')
     bookings = db.relationship("Booking", backref="event")
